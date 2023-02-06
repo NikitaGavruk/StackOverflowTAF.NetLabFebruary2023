@@ -19,7 +19,7 @@ namespace UI
 
         public virtual bool isLoaded()
         {
-            return driver.Url.Contains("stackoverflow.commmmimi");
+            return driver.Url.Contains("stackoverflow.com");
 
         }
 
