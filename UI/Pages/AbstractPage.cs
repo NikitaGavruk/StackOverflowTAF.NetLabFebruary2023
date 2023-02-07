@@ -22,9 +22,5 @@ namespace UI
             return driver.Url.Contains("stackoverflow.com");
 
         }
-
-    
-
-
     }
 }

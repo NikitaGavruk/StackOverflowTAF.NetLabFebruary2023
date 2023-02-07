@@ -1,7 +1,0 @@
-C:\Users\Davit\Desktop\NetAutomatinLab\.Net-Lab\UI\bin\Debug\UI.exe.config
-C:\Users\Davit\Desktop\NetAutomatinLab\.Net-Lab\UI\bin\Debug\UI.exe
-C:\Users\Davit\Desktop\NetAutomatinLab\.Net-Lab\UI\bin\Debug\UI.pdb
-C:\Users\Davit\Desktop\NetAutomatinLab\.Net-Lab\UI\obj\Debug\UI.csproj.AssemblyReference.cache
-C:\Users\Davit\Desktop\NetAutomatinLab\.Net-Lab\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache
-C:\Users\Davit\Desktop\NetAutomatinLab\.Net-Lab\UI\obj\Debug\UI.exe
-C:\Users\Davit\Desktop\NetAutomatinLab\.Net-Lab\UI\obj\Debug\UI.pdb
