@@ -1,0 +1,27 @@
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools;
+
+namespace SlackOverFlow
+{
+    public class BaseTest
+    {
+      
+        [SetUp]
+        public void Setup()
+        {
+           
+            Browser = Browser.Instance;
+            Browser.WindowMaximaze();
+            Browser.NavigateTo(Configuration.StartUrl);
+
+        }
+
+        [TearDown]
+        public void Quite()
+        {
+           
+            Browser.QuiteBrowser();
+        }
+    }
+}
