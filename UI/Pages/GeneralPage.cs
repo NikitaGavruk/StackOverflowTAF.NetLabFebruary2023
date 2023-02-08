@@ -9,8 +9,9 @@ namespace UI.Pages
 {
     internal class GeneralPage : AbstractPage
     {
-        By forTeamsButtonElement = By.XPath("//a[contains(text(),'For Teams')] ");
         Wait wait = new Wait();
+        By forTeamsButtonElement = By.XPath("//a[contains(text(),'For Teams')] ");
+
         public GeneralPage(IWebDriver driver) : base(driver)
         {
         }
@@ -22,9 +23,11 @@ namespace UI.Pages
 
         public void GoToForTeamsPage()
         {
+            wait.WaitElement(driver, forTeamsButtonElement);
             IWebElement forTeamsButton = driver.FindElement(forTeamsButtonElement);
-            wait.WaitElement(driver,forTeamsButtonElement);
             forTeamsButton.Click();
         }
+
+
     }
 }

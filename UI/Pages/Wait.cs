@@ -12,12 +12,10 @@ namespace UI.Pages
     {
 
         WebDriverWait waiter;
-
         public void WaitElement(IWebDriver driver, By selector)
-        {
-           
+        {          
             waiter = new WebDriverWait(driver, System.TimeSpan.FromSeconds(15));
-          //  waiter.Until(driver=> driver.FindElement(selector).Displayed);
+            waiter.Until(driver1=> driver.FindElement(selector).Displayed);
 
         }
     }
