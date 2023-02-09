@@ -1,0 +1,94 @@
+
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium;
+using SeleniumExtras.WaitHelpers;
+using System;
+
+
+namespace StackOverFlow
+{
+    public class WebDriverExtension
+    {
+        
+        public WebDriverExtension()
+        {
+        }
+
+        public static void ClickOnButton(By xpath, IWebDriver driver)
+        {
+            WaitUntilElementIsVisible(xpath, driver);
+            WaitUntilElementIsClickable(xpath,driver);
+            driver.FindElement(xpath).Click();
+        }
+        public static string GetTextFromField(By xpath, IWebDriver driver)
+        {
+            WaitUntilElementIsVisible(xpath, driver);
+            return driver.FindElement(xpath).Text;
+        }
+        public static string GetAttributeValueFromField(By xpath, string attribute, IWebDriver driver)
+        {
+            WaitUntilElementIsVisible(xpath, driver);
+            return driver.FindElement(xpath).GetAttribute(attribute);
+        }
+        public static void InputTextInField(By xpath, String input, IWebDriver driver)
+        {
+            WaitUntilElementIsVisible(xpath, driver);
+            driver.FindElement(xpath).SendKeys(input);
+        }
+        public static bool IsElementVisible(By xpath, IWebDriver driver)
+        {
+            bool status = true;
+            try
+            {
+                new WebDriverWait(driver, TimeSpan.FromSeconds(6)).Until(ExpectedConditions.ElementIsVisible(xpath));
+            }
+            catch (WebDriverTimeoutException ex)
+            {
+                status = false;
+            }
+            return status;
+        }
+        public static bool IsElementExists(By xpath, IWebDriver driver)
+        {
+            bool status = true;
+            try
+            {
+                new WebDriverWait(driver, TimeSpan.FromSeconds(2)).Until(ExpectedConditions.ElementExists(xpath));
+            }
+            catch (WebDriverTimeoutException ex)
+            {
+                status = false;
+            }
+            return status;
+        }
+        public static bool IsElementClickable(By xpath, IWebDriver driver)
+        {
+            bool status = true;
+            try
+            {
+                new WebDriverWait(driver, TimeSpan.FromSeconds(3)).Until(ExpectedConditions.ElementToBeClickable(xpath));
+            }
+            catch (WebDriverTimeoutException ex)
+            {
+                status = false;
+            }
+            return status;
+        }
+        public static void WaitUntilElementIsVisible(By xpath, IWebDriver driver)
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(xpath));
+        }
+        public static void WaitUntilElementIsExists(By xpath, IWebDriver driver)
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(2)).Until(ExpectedConditions.ElementExists(xpath));
+        }
+        public static void WaitUntilElementIsClickable(By xpath, IWebDriver driver)
+        {
+
+            new WebDriverWait(driver, TimeSpan.FromSeconds(3)).Until(ExpectedConditions.ElementToBeClickable(xpath));
+        }
+        
+
+    }
+}
+
