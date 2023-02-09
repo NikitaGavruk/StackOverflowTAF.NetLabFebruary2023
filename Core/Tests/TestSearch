@@ -1,0 +1,37 @@
+using System;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+
+namespace SlackOverFlowSearch
+{
+    public class Tests
+    {
+        string baseUrl = "https://stackoverflow.com/";
+        By searchBar = By.XPath("//input[@placeholder='Search…']");
+        string text = ".gitignore";
+        By searchResult = By.XPath("//h1[@class='flex--item fl1 fs-headline1 mb0']");
+        By mySearchResult = By.XPath("//div[@class='mb8']");
+        By notRobotButton = By.XPath("//div[@class='recaptcha-checkbox-border']");
+        
+
+        [Test] //Problem with captch
+        public void SearchTesting()
+        {
+            IWebDriver driver = new ChromeDriver();
+            
+            driver.Navigate().GoToUrl(baseUrl);
+            driver.FindElement(searchBar).Click();
+            driver.FindElement(searchBar).SendKeys(text);
+            driver.FindElement(searchBar).SendKeys(Keys.Enter);
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
+            Assert.That(driver.FindElement(searchResult).Displayed);
+            Assert.That(driver.FindElement(mySearchResult).Displayed);
+
+        }
+    }
+
+
+
+}
