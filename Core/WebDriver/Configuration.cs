@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutomationTeamProject.WebDriver
 {
-    internal class Configuration
+    public class Configuration
     {
+
+        //app.config data exrtractor method
         public static string GetEnvironmentVar(string var, string defaultaVar)
         {
             string SourceCodeConfigeFile = $"{Assembly.GetExecutingAssembly().Location}.config";
@@ -19,8 +16,13 @@ namespace AutomationTeamProject.WebDriver
             return ConfigurationManager.AppSettings[var] ?? defaultaVar;
         }
 
+        //app.config Timeout extraction
         public static string ElementTimeout => GetEnvironmentVar("ElementTimeout", "30");
+
+        //app.config Browser extraction
         public static string Browser => GetEnvironmentVar("Browser", "Chrome");
+
+        //app.config starting Url  extraction
         public static string StartUrl => GetEnvironmentVar("StartUrl", "https://stackoverflow.com");
 
     }
