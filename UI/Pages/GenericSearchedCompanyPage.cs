@@ -26,7 +26,7 @@ namespace UI.Pages {
             iterator++;
         }
 
-        private string getUrl() =>
+        private string GetUrl() =>
             Urls[iterator];
 
         private void NavigateToPage() {

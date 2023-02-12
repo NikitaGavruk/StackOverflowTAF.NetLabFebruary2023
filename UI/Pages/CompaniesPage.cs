@@ -6,7 +6,7 @@ using UI.Utils;
 
 namespace UI.Pages {
     internal class CompaniesPage {
-        
+
         private static readonly By firstCompanyLogoInCompanyList = By.XPath("//div[@class='company-list']/descendant::img[1]");
         private static readonly By filterByTagButton = By.XPath("//button[@id='filter-button-tech']");
         private static readonly By filterByTagButtonAppended = By.XPath("//button[@id='filter-button-tech']/span[2]");
@@ -19,9 +19,8 @@ namespace UI.Pages {
         private static readonly string fixedSuggestion = "//span[@class='s-tag rendered-element' and text()='{0}']";
         private static readonly string searchedCompanyGenericCompanyName = "//div[@class='company-list']/div[{0}]/div[3]/div[2]/h2/a";
         private static readonly string tagUnderSearchBox = "//div[@class='d-flex fd-row ai-baseline my12']/descendant::span[2][contains(text(),'rust')]";
-        //private static readonly string selectedSuggestion = "//div[contains(@id,'tag-suggestions')]/div[{0}]/div/div/span/span";
+        private static readonly string tagToSearch = new XML_Reader("C:/Users/User/OneDrive/Desktop/.NET Lab/.NET Project/.Net-Lab/UI/Tests/TestData.xml").GetTextFromNode("//TagToSearch");
         
-
 
         public bool IsPageLoaded() =>
             WebDriverExtension.IsElementClickable(firstCompanyLogoInCompanyList, 5);
@@ -34,7 +33,7 @@ namespace UI.Pages {
 
         public void InputInTheFilterByTagSearchBox() {
             WebDriverExtension.ClickOnButton(filterByTagPaneSearchBox, 1);
-            WebDriverExtension.InputTextInField(filterByTagPaneSearchBox, 1, TestData.tagToSearch);
+            WebDriverExtension.InputTextInField(filterByTagPaneSearchBox, 1, tagToSearch);
             
         }
 
@@ -53,7 +52,7 @@ namespace UI.Pages {
             !IsSuggestionsPaneVisisble();
 
         public bool IsClickedTagFixedOnTheSearchBar() =>
-            WebDriverExtension.IsElementExists(WebUtils.FormatXpath(fixedSuggestion, TestData.tagToSearch),2);
+            WebDriverExtension.IsElementExists(WebUtils.FormatXpath(fixedSuggestion, tagToSearch),2);
 
         public void ClickApplyFilterButton() =>
             WebDriverExtension.ClickOnButton(applyFilterButton, 5);
@@ -80,7 +79,7 @@ namespace UI.Pages {
 
         public bool IsCompanyCountDisplayed(out int count) {
             WebDriverExtension.WaitUntilElementIsExists(WebUtils.FormatXpath(
-                tagUnderSearchBox, TestData.tagToSearch), 5);
+                tagUnderSearchBox, tagToSearch), 5);
 
             string stringCount = WebDriverExtension.GetTextFromField(countOfCompanies, 5);
             Match regex = Regex.Match(stringCount, @"[\d]+");

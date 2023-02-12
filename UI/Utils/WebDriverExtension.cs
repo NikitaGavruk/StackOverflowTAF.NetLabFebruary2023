@@ -74,7 +74,6 @@ namespace UI.Utils {
             new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementExists(xpath));
         }
         public static void WaitUntilElementIsClickable(By xpath, int seconds) {
-
             new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(xpath));
         }
         public static void MouseDown(By xpath, int waitSeconds) {

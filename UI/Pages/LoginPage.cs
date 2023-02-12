@@ -6,10 +6,10 @@ namespace UI.Pages {
 
     internal class LoginPage:AbstractPage {
 
-        private static readonly By loginButtonFormContainer = By.XPath("//button[@name='submit-button' and text()='Log in']");
+        private static readonly By loginButtonFormContainer = By.Id("submit-button");
         private static readonly By loginButtonTopBar = By.XPath("//li/a[contains(@data-ga,'login button click')]");
-        private static readonly By emailField = By.XPath("//input[@id='email']");
-        private static readonly By passwordField = By.XPath("//input[@id='password']");
+        private static readonly By emailField = By.Id("email");
+        private static readonly By passwordField = By.Id("password");
         public static readonly By acceptCookiesbutton = By.XPath("//button[contains(text(),'Accept all')]");
 
         public LoginPage InputEmail(string accountEmail) {

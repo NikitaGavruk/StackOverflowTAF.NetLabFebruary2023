@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using StackOverFlow.WebDrvier;
 using UI.Entities;
 using UI.Pages;
 using UI.Steps;
@@ -7,22 +6,19 @@ using UI.Utils;
 
 namespace UI.Tests {
 
-    [TestFixture]
-    internal class Tests {
 
-        protected static Browser Browser;
-        User user = new User(TestData._email,TestData._pasword);
+    [TestFixture]
+    internal class Tests:BaseTest {
+        
+        private static readonly XML_Reader xmlReader = new ("C:/Users/User/OneDrive/Desktop/.NET Lab/.NET Project/.Net-Lab/UI/Tests/TestData.xml");
+        private static readonly string email = xmlReader.GetTextFromNode("//Email");
+        private static readonly string password = xmlReader.GetTextFromNode("//Password");
+        private static readonly string tagToSearch = xmlReader.GetTextFromNode("//TagToSearch");
+        User user = new User(email, password);
         HomePage homePage;
         CompaniesPage companiesPage;
         CompanyPageSteps companiesPageSteps;
         GenericSearchedCompanyPage genericSearchedPage;
-
-        [SetUp]
-        public void Setup() {
-            Browser = Browser.Instance;
-            Browser.WindowMaximaze();
-            Browser.NavigateTo("https://stackoverflow.com/");
-        }
 
         [Test]
         public void Test() {
@@ -64,15 +60,10 @@ namespace UI.Tests {
             //pages returned By search
             genericSearchedPage =
             GenericSearchedCompanyPage.CreateInstance(companiesPage.GetUrls(countOfCompanies));
-            //Asset That The Searched Tag is included in each Company's techstack list
-            Assert.That(genericSearchedPage.IsTagExists(countOfCompanies, TestData.tagToSearch));
+            //Assert That The Searched Tag is included in each Company's techstack list
+            Assert.That(genericSearchedPage.IsTagExists(countOfCompanies, tagToSearch));
 
 
-        }
-
-        [TearDown]
-        public void Quit() {
-            Browser.QuitBrowser();
         }
 
     }
