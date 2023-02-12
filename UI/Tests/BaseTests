@@ -6,14 +6,17 @@ namespace SlackOverFlow
 {
     public class BaseTest
     {
+
+        protected static Browser Browser = Browser.Instance;
+        protected LoggerClass Log;
       
         [SetUp]
         public void Setup()
         {
-           
+            Log = LoggerManager.GetLogger(this.GetType());
             Browser = Browser.Instance;
             Browser.WindowMaximaze();
-            Browser.NavigateTo(Configuration.StartUrl);
+            Browser.NavigateTo(https://stackoverflow.com/);
 
         }
 
