@@ -6,11 +6,10 @@ using UI.Utils;
 
 namespace UI.Tests {
 
-
     [TestFixture]
     internal class Tests:BaseTest {
         
-        private static readonly XML_Reader xmlReader = new ("C:/Users/User/OneDrive/Desktop/.NET Lab/.NET Project/.Net-Lab/UI/Tests/TestData.xml");
+        private static readonly XML_Reader xmlReader = new(@"..\..\..\Tests\TestData.xml");
         private static readonly string email = xmlReader.GetTextFromNode("//Email");
         private static readonly string password = xmlReader.GetTextFromNode("//Password");
         private static readonly string tagToSearch = xmlReader.GetTextFromNode("//TagToSearch");
@@ -62,7 +61,6 @@ namespace UI.Tests {
             GenericSearchedCompanyPage.CreateInstance(companiesPage.GetUrls(countOfCompanies));
             //Assert That The Searched Tag is included in each Company's techstack list
             Assert.That(genericSearchedPage.IsTagExists(countOfCompanies, tagToSearch));
-
 
         }
 

@@ -4,7 +4,7 @@ using UI.Utils;
 namespace UI.Pages {
     internal class HomePage:AbstractPage {
         
-        private static readonly By overFlowBlogFirstItem = By.XPath("//div[@id='sidebar']/div/descendant::li[2]/div[2]");
+        private static readonly By overFlowBlogFirstItem = By.XPath("//div[contains(@Class,'ow-break-word')]");
         private static readonly By companiesButton = By.XPath("//div[contains(text(),'Companies')]");
 
         public bool IsPageLoaded() =>
