@@ -6,7 +6,6 @@ namespace SlackOverFlow
 {
     public class BaseTest
     {
-
         protected static Browser Browser = Browser.Instance;
         protected LoggerClass Log;
       
@@ -17,13 +16,11 @@ namespace SlackOverFlow
             Browser = Browser.Instance;
             Browser.WindowMaximaze();
             Browser.NavigateTo(Configuration.StartUrl);
-
         }
 
         [TearDown]
         public void Quite()
         {
-           
             Browser.QuiteBrowser();
         }
     }
