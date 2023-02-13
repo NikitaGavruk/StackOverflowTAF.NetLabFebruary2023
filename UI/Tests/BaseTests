@@ -16,7 +16,7 @@ namespace SlackOverFlow
             Log = LoggerManager.GetLogger(this.GetType());
             Browser = Browser.Instance;
             Browser.WindowMaximaze();
-            Browser.NavigateTo(https://stackoverflow.com/);
+            Browser.NavigateTo(Configuration.StartUrl);
 
         }
 
