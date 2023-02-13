@@ -396,3 +396,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Some other files
+*.csproj.nuget
+*.assets.cache
+*.Reference.cache
+*.project.assets.json
+*.cache
