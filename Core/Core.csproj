@@ -54,16 +54,12 @@
     <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebDriver\Browser.cs" />
-    <Compile Include="WebDriver\Configuration.cs" />
-    <Compile Include="WebDriver\WebDriverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="obj\Release\Core.csproj.AssemblyReference.cache" />
     <None Include="packages.config" />
     <None Include="test.runsettings" />
-    <None Include="Tests\BaseTests" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
