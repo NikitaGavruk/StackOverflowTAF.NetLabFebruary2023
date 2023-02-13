@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
-using StackOverFlow.WebDrvier;
 using System;
 using SeleniumExtras.WaitHelpers;
 using System.Collections.ObjectModel;
