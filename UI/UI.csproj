@@ -61,6 +61,8 @@
     <Compile Include="Pages\LandingPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Steps\CompanyPageSteps.cs" />
+    <Compile Include="Steps\LoginPageSteps.cs" />
     <Compile Include="Tests\BaseTest.cs" />
     <Compile Include="Tests\Tests.cs" />
     <Compile Include="Utils\ReadFromXML.cs" />
@@ -75,7 +77,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Tests\BaseTests" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Tests\TestData.xml" />
