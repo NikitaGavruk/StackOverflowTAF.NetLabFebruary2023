@@ -13,10 +13,9 @@ namespace UI.Tests
     {
 
         protected static Browser Browser;
-        Search searchWord = new Search(TestData.searchWord);
+        string searchWord = ".gitignore";
         MainPage mainPage;
         CaptchaPage captchaPage;
-        SearchPage searchPage;
         SearchResultPage searchResultPage;
 
   
@@ -29,21 +28,18 @@ namespace UI.Tests
             Assert.That(mainPage.IsSearchBarVisible());
 
             //Input search text
-            searchPage.InputSearchWord(searchWord);
+            mainPage.InputSearchWord(searchWord);
             //Clicking Enter
-            searchPage.ClickEnter()
+            mainPage.ClickEnter()
             //Assert that the captcha page has been opened
-            Assert.That(captchaPage.DoesCaptchaButtonExist());
+            Assert.That(WebUtils.IsCaptchaButtonExists());
 
             //Dealing with captcha manually
-            captchaPage.DoCaptchaManually();
+            WebUtils.DoCaptchaManually();
 
             //Assert that The Search page is opened
             searchResultPage = new SearchResultPage();
             Assert.That(searchResultPage.IsSearchDoneCorrectly());
-
-           
-
 
         }
 

@@ -6,24 +6,17 @@ namespace UI.Pages
 {
     internal class SearchResultPage : AbstractPage
     {
-
         private string readonly By searchPageTitle = By.XPath("//h1[@class='flex--item fl1 fs-headline1 mb0']");
         private string readonly By searchResult = By.XPath("//div[contains(text(),'Results for .gitignore')]");
 
-
-        
-        public bool DoesSearchPageTitleExist()
+        public bool IsSearchPageTitleExists()
         {
             WebDriverExtension.IsElementExists(searchPageTitle, 10);
         }
 
-        public bool DoesSearchNameExist()
+        public bool IssSearchNameExists()
         {
             WebDriverExtension.IsElementExists(searchResult, 10);
         }
-
-
-
-
-}
+    }
 }
