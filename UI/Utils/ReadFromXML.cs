@@ -20,7 +20,7 @@ namespace UI.Utils {
             catch (XmlException) {
                 throw new ArgumentException("The Node Could Not Be Found");
             }
-            return node!.InnerText;
+            return node.InnerText;
         }
 
     }

@@ -17,7 +17,7 @@ namespace UI.Tests {
 
         [TearDown]
         public void Quit() {
-            Browser.QuitBrowser();
+            Browser.QuiteBrowser();
         }
 
     }

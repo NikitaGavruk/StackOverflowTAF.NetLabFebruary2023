@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 using static AutomationTeamProject.WebDriver.WebDriverFactory;
 
@@ -11,6 +12,8 @@ namespace AutomationTeamProject.WebDriver
         private static string _browser;
         private static int ImplWait;
         private static IWebDriver webDriver;
+        private static Actions _actions;
+        private static IJavaScriptExecutor _jsExecuter;
 
         // pars the parameter that ar taken from App.config
         private static void InitParams()
@@ -59,6 +62,18 @@ namespace AutomationTeamProject.WebDriver
             _currentInstance = null;
             webDriver = null;
             _browser = null;
+        }
+
+        //get Actions
+        public static Actions GetActions() {
+            _actions = new Actions(GetDriver());
+            return _actions;
+        }
+
+        //Get JS Executer
+        public static IJavaScriptExecutor GetJSExecuter() {
+            _jsExecuter = (IJavaScriptExecutor)GetDriver();
+            return _jsExecuter;
         }
     }
 }

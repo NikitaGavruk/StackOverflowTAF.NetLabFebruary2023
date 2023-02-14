@@ -8,8 +8,8 @@ namespace UI.Tests {
 
     [TestFixture]
     internal class Tests:BaseTest {
-        
-        private static readonly XML_Reader xmlReader = new XML_Reader(@"..\..\..\Tests\TestData.xml");
+        //..\..\..\Tests\TestData.xml
+        private static readonly XML_Reader xmlReader = new XML_Reader(@"UI\Tests\TestData.xml");
         private static readonly string email = xmlReader.GetTextFromNode("//Email");
         private static readonly string password = xmlReader.GetTextFromNode("//Password");
         private static readonly string tagToSearch = xmlReader.GetTextFromNode("//TagToSearch");

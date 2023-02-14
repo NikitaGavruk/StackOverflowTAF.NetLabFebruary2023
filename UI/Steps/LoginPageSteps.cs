@@ -8,7 +8,7 @@ namespace UI.Steps {
         private readonly LoginPage loginPage = new LoginPage();
 
         public HomePage Login(User user) {
-            LandingPage landing = new();
+            LandingPage landing = new LandingPage();
             landing.ClickLogIn();
 
             if (WebDriverExtension.IsElementClickable(LoginPage.acceptCookiesbutton, 5))

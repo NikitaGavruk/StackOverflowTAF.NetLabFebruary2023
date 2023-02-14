@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using System;
 using SeleniumExtras.WaitHelpers;
 using System.Collections.ObjectModel;
-using UI.Exceptions;
+using AutomationTeamProject.WebDriver;
 
 namespace UI.Utils {
     internal static class WebDriverExtension {
