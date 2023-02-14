@@ -14,7 +14,7 @@ namespace UI.Steps
         {
           forTeamsPage.CookiesNessAccept();
           forTeamsPage.ClickOnWatchVideoButton();
-          return forTeamsPage;
+          return new ForTeamsPage();
         }
     }
 }

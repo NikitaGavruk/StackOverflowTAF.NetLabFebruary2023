@@ -17,9 +17,10 @@ namespace UI.Pages
         By videoFieldElement = By.XPath("//aside[@class='s-modal']");
         By cookiesbuttonacElement = By.Id("onetrust-reject-all-handler");
 
-        public void ClickOnWatchVideoButton()
+        public ForTeamsPage ClickOnWatchVideoButton()
         {
             WebDriverExtension.ClickOnButton(videoButtonElement);
+            return new ForTeamsPage();
         }
 
         public bool IsVideoSuccesfulyOpen()

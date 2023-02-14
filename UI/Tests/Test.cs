@@ -14,14 +14,12 @@ namespace UI.Tests
     internal class Test:BaseTest
     {
         GeneralPage generalPage = new GeneralPage();
-        ForTeamsSteps forTeamsSteps = new ForTeamsSteps();
 
         [Test]
         public void VideoFieldIsDisplayed()
         {
-            generalPage.GoToForTeamsPage();
-            var forTeamsPageVideo = forTeamsSteps.ClickOnVideoButton();
-            Assert.IsTrue(forTeamsPageVideo.IsVideoSuccesfulyOpen(), "Video did not open");
+           var forTeamsPageVideo = generalPage.GoToForTeamsPage().ClickOnVideoButton();
+           Assert.IsTrue(forTeamsPageVideo.IsVideoSuccesfulyOpen(), "Video did not open");
         }
     }
 }
