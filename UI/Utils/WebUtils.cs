@@ -12,12 +12,24 @@ namespace UI.Utils
 
         public bool IsCaptchaButtonExists()
         {
-            ExternalMethods.IsElementExists(captchaButton, 10);
+           return IsElementExists(captchaButton, 10);
         }
 
-        public void DoCaptchaManually()
+        public WebUtils DoCaptchaManually()
         {
-            ExternalMethods.WaitUntilCaptchaIsDoneManually(100);
+            return WebDriverExtensions.WaitUntilCaptchaIsDoneManually(100);
+        }
+
+        public static void ClickOnEnter(By xpath, int waitSeconds)
+        {
+            WaitUntilElementIsVisible(xpath, waitSeconds);
+            WaitUntilElementIsClickable(xpath, waitSeconds);
+            Browser.GetDriver().FindElement(xpath).SendKeys(Keys.Enter);
+        }
+
+        public static void WaitUntilCaptchaIsDoneManually(int seconds)
+        {
+            new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds));
         }
     }
 

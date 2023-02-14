@@ -14,9 +14,9 @@ namespace UI.Pages
             WebDriverExtension.IsElementExists(searchPageTitle, 10);
         }
 
-        public bool IssSearchNameExists()
+        public bool IsSearchNameExists()
         {
-            WebDriverExtension.IsElementExists(searchResult, 10);
+            return WebDriverExtension.IsElementExists(searchResult, 10);
         }
     }
 }

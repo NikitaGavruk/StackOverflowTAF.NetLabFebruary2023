@@ -10,13 +10,6 @@ namespace UI.Utils
 {
     internal static class WebDriverExtension
     {
-        public static void ClickOnEnter(By xpath, int waitSeconds)
-        {
-            WaitUntilElementIsVisible(xpath, waitSeconds);
-            WaitUntilElementIsClickable(xpath, waitSeconds);
-            Browser.GetDriver().FindElement(xpath).SendKeys(Keys.Enter);
-        }
-
         public static void WaitUntilCaptchaIsDoneManually(int seconds)
         {
             new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds));

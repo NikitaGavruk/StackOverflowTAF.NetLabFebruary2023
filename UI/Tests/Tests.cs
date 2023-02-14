@@ -13,7 +13,6 @@ namespace UI.Tests
     {
 
         protected static Browser Browser;
-        string searchWord = ".gitignore";
         MainPage mainPage;
         CaptchaPage captchaPage;
         SearchResultPage searchResultPage;
@@ -28,7 +27,7 @@ namespace UI.Tests
             Assert.That(mainPage.IsSearchBarVisible());
 
             //Input search text
-            mainPage.InputSearchWord(searchWord);
+            mainPage.InputSearchWord(".gitignore");
             //Clicking Enter
             mainPage.ClickEnter()
             //Assert that the captcha page has been opened

@@ -10,13 +10,10 @@ namespace UI.Pages
 
         public bool IsSearchBarVisible() => WebDriverExtension.IsElementClickable(searchBar, 10);
 
-
-
-        private static readonly By searchBar = By.XPath("//input[@placeholder='Search…']");
-
         public SearchPage InputSearchWord(string searchWord)
         {
             WebDriverExtension.InputTextInFieldByJS(searchBar, 5, searchWord);
+            return this;
         }
 
         public MainPage ClickEnter() =>
