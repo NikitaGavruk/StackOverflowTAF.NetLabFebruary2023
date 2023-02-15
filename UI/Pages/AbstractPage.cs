@@ -1,5 +1,4 @@
-﻿using AutomationTeamProject.WebDriver;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.DevTools.V107.Page;
 using System;
 using System.Collections.Generic;
@@ -11,13 +10,17 @@ namespace UI
 {
     internal abstract class AbstractPage
     {
-        protected AbstractPage()
-        {
+      protected IWebDriver driver;
+        public AbstractPage(IWebDriver driver) {
+            this.driver = driver;
         }
-        public T NavigateToUrl<T>(string url) where T : AbstractPage
+
+        public abstract void Navigate();
+
+        public virtual bool isLoaded()
         {
-            Browser.GetDriver().Navigate().GoToUrl(url);
-            return (T)Activator.CreateInstance(typeof(T));
+            return driver.Url.Contains("stackoverflow.com");
+
         }
     }
 }
