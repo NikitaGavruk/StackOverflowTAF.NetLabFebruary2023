@@ -5,7 +5,7 @@ namespace UI.Steps
 {
     internal class SearchResultPageSteps
     {
-        SearchResultPage searchResultPage = new();
+        SearchResultPage searchResultPage = new SearchResultPage();
 
         public bool IsSearchDoneCorrectly()
         {
