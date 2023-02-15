@@ -7,25 +7,23 @@ namespace AutomationTeamProject.WebDriver
 {
     public class WebDriverFactory
     {
-        public enum Browsertype
+        public enum BrowserType
         {
-            chrome,
+            Chrome,
             Firefox
         }
 
-        public static IWebDriver GetDriver(Browsertype browser, int TimeoutSec)
+        public static IWebDriver GetDriver(BrowserType browser, int TimeoutSec)
         {
             IWebDriver WebDriver = null;
             switch (browser)
             {
-                case Browsertype.chrome:
+                case BrowserType.Chrome:
                     {
-                        var Service = ChromeDriverService.CreateDefaultService();
-                        var Option = new ChromeOptions();
-                        WebDriver = new ChromeDriver(Service, Option, TimeSpan.FromSeconds(TimeoutSec));
+                        WebDriver = new ChromeDriver();
                         break;
                     }
-                case Browsertype.Firefox:
+                case BrowserType.Firefox:
                     {
                         WebDriver = new FirefoxDriver();
                         break;

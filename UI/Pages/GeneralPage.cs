@@ -14,6 +14,8 @@ namespace UI.Pages
     {
         private static readonly By forTeamsButtonElement = By.XPath("//a[contains(text(),'For Teams')] ");
         private static readonly By searchBar = By.XPath("//input[@placeholder='Search…']");
+        private static readonly By overFlowBlogFirstItem = By.XPath("//div[contains(@Class,'ow-break-word')]");
+        private static readonly By companiesButton = By.XPath("//div[contains(text(),'Companies')]");
 
         public ForTeamsSteps GoToForTeamsPage()
         {
@@ -30,6 +32,15 @@ namespace UI.Pages
             WebDriverExtension.InputTextInFieldByJS(searchBar, searchWord);
             WebDriverExtension.ClickOnEnter(searchBar);
             return new SearchResultPage();
+        }
+
+        public bool IsPageLoaded() =>
+            WebDriverExtension.IsElementClickable(overFlowBlogFirstItem, 5);
+
+
+        public CompaniesPage ClickOnCompaniesButton() {
+            WebDriverExtension.MouseDownByJS(companiesButton, 5);
+            return new CompaniesPage();
         }
 
     }
