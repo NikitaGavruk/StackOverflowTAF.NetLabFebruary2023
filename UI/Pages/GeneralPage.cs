@@ -14,6 +14,14 @@ namespace UI.Pages
     {
         private static readonly By forTeamsButtonElement = By.XPath("//a[contains(text(),'For Teams')] ");
         private static readonly By searchBar = By.XPath("//input[@placeholder='Search…']");
+        private static readonly By careerButtonElement = By.Id("company-careers");
+
+
+        public CareersPage GoToCareerPages()
+        {
+            WebDriverExtension.ClickOnButton(careerButtonElement);
+            return new CareersPage();
+        }
 
         public ForTeamsSteps GoToForTeamsPage()
         {
@@ -23,7 +31,7 @@ namespace UI.Pages
 
         public bool IsSearchBarVisible()
         {
-            return WebDriverExtension.IsElementClickable(searchBar,5);
+            return WebDriverExtension.IsElementClickable(searchBar, 5);
         }
         public SearchResultPage ExecuteSearchRequest(string searchWord)
         {
@@ -31,6 +39,8 @@ namespace UI.Pages
             WebDriverExtension.ClickOnEnter(searchBar);
             return new SearchResultPage();
         }
+
+
 
     }
 }
