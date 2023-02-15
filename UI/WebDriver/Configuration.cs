@@ -9,7 +9,6 @@
             //string SourceCodeConfigeFile = $"{Assembly.GetExecutingAssembly().Location}.config";
             //string OutputonfigFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None).FilePath;
             //File.Copy(SourceCodeConfigeFile, OutputonfigFile, true);
-            //System.Console.WriteLine(defaultaVar);
             return defaultaVar;
         }
 

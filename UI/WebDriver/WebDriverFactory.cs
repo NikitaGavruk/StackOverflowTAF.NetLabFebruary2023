@@ -18,7 +18,7 @@ namespace AutomationTeamProject.WebDriver
             IWebDriver WebDriver = null;
             switch (browser)
             {
-                case BrowserType.chrome:
+                case BrowserType.Chrome:
                     {
                         WebDriver = new ChromeDriver();
                         break;
