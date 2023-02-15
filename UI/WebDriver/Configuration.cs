@@ -7,13 +7,14 @@ namespace AutomationTeamProject.WebDriver
     public class Configuration
     {
 
-        //app.config data exrtractor method
         public static string GetEnvironmentVar(string var, string defaultaVar)
         {
-            string SourceCodeConfigeFile = $"{Assembly.GetExecutingAssembly().Location}.config";
-            string OutputonfigFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None).FilePath;
-            File.Copy(SourceCodeConfigeFile, OutputonfigFile, true);
-            return ConfigurationManager.AppSettings[var] ?? defaultaVar;
+            //System.Console.WriteLine(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None).FilePath);
+            //string SourceCodeConfigeFile = $"{Assembly.GetExecutingAssembly().Location}.config";
+            //string OutputonfigFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None).FilePath;
+            //File.Copy(SourceCodeConfigeFile, OutputonfigFile, true);
+            //System.Console.WriteLine(defaultaVar);
+            return defaultaVar;
         }
 
         //app.config Timeout extraction
