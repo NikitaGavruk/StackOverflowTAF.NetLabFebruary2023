@@ -1,18 +1,16 @@
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.DevTools;
-
+using AutomationTeamProject.WebDriver;
 namespace SlackOverFlow
 {
     public class BaseTest
     {
-        protected static Browser Browser = Browser.Instance;
-        protected LoggerClass Log;
+        protected static Browser Browser;
       
         [SetUp]
         public void Setup()
         {
-            Log = LoggerManager.GetLogger(this.GetType());
             Browser = Browser.Instance;
             Browser.WindowMaximaze();
             Browser.NavigateTo(Configuration.StartUrl);
