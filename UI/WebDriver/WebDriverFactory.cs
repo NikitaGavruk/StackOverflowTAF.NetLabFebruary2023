@@ -9,7 +9,7 @@ namespace AutomationTeamProject.WebDriver
     {
         public enum Browsertype
         {
-            chrome,
+            Chrome,
             Firefox
         }
 
@@ -18,11 +18,9 @@ namespace AutomationTeamProject.WebDriver
             IWebDriver WebDriver = null;
             switch (browser)
             {
-                case Browsertype.chrome:
+                case Browsertype.Chrome:
                     {
-                        var Service = ChromeDriverService.CreateDefaultService();
-                        var Option = new ChromeOptions();
-                        WebDriver = new ChromeDriver(Service, Option, TimeSpan.FromSeconds(TimeoutSec));
+                        WebDriver = new ChromeDriver();
                         break;
                     }
                 case Browsertype.Firefox:

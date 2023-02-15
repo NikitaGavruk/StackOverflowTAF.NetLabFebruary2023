@@ -1,10 +1,9 @@
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.DevTools;
 using AutomationTeamProject.WebDriver;
-namespace SlackOverFlow
-{
-    public class BaseTest
+
+namespace UI.Tests {
+
+    public class BaseTests
     {
         protected static Browser Browser;
       

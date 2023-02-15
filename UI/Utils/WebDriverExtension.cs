@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium.Support.UI;
+﻿using WaitersNamespace = OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using System;
 using SeleniumExtras.WaitHelpers;
@@ -39,7 +39,7 @@ namespace UI.Utils {
         public static bool IsElementVisible(By xpath, int seconds) {
             bool status = true;
             try {
-                new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementIsVisible(xpath));
+                new WaitersNamespace.WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementIsVisible(xpath));
             }
             catch (WebDriverTimeoutException) {
                 status = false;
@@ -49,7 +49,7 @@ namespace UI.Utils {
         public static bool IsElementExists(By xpath, int seconds) {
             bool status = true;
             try {
-                new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementExists(xpath));
+                new WaitersNamespace.WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementExists(xpath));
             }
             catch (WebDriverTimeoutException) {
                 status = false;
@@ -59,7 +59,7 @@ namespace UI.Utils {
         public static bool IsElementClickable(By xpath, int seconds) {
             bool status = true;
             try {
-                new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(xpath));
+                new WaitersNamespace.WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(xpath));
             }
             catch (WebDriverTimeoutException) {
                 status = false;
@@ -67,13 +67,13 @@ namespace UI.Utils {
             return status;
         }
         public static void WaitUntilElementIsVisible(By xpath, int seconds) {
-            new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementIsVisible(xpath));
+            new WaitersNamespace.WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementIsVisible(xpath));
         }
         public static void WaitUntilElementIsExists(By xpath, int seconds) {
-            new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementExists(xpath));
+            new WaitersNamespace.WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementExists(xpath));
         }
         public static void WaitUntilElementIsClickable(By xpath, int seconds) {
-            new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(xpath));
+            new WaitersNamespace.WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(xpath));
         }
         public static void MouseDown(By xpath, int waitSeconds) {
             WaitUntilElementIsClickable(xpath, waitSeconds);
