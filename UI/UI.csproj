@@ -84,6 +84,12 @@
     <Compile Include="WebDriver\Browser.cs" />
     <Compile Include="WebDriver\Configuration.cs" />
     <Compile Include="WebDriver\WebDriverFactory.cs" />
+    <Compile Include="Tests\BaseTests.cs" />
+    <Compile Include="Tests\Test.cs" />
+    <Compile Include="Utils\WebDriverExtension.cs" />
+    <Compile Include="Utils\WebUtils.cs" />
+    <Compile Include="Steps\SearchResultPageSteps.cs" />
+    <Compile Include="Steps\ForTeamsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
@@ -104,6 +110,7 @@
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.GeckoDriver.0.32.2\build\Selenium.WebDriver.GeckoDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.GeckoDriver.0.32.2\build\Selenium.WebDriver.GeckoDriver.targets'))" />
     <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets'))" />
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.4.8.0\build\Selenium.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.4.8.0\build\Selenium.WebDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.13.3\build\NUnit.props'))" />
   </Target>
   <Import Project="..\packages\Selenium.WebDriver.GeckoDriver.0.32.2\build\Selenium.WebDriver.GeckoDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.GeckoDriver.0.32.2\build\Selenium.WebDriver.GeckoDriver.targets')" />
   <Import Project="..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets')" />
