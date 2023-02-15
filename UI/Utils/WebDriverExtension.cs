@@ -19,6 +19,13 @@ namespace UI.Utils
             Browser.GetDriver().FindElement(xpath).Click();
         }
 
+        public static void ClickOnEnter(By xpath, int waitSeconds)
+        {
+            WaitUntilElementIsVisible(xpath, waitSeconds);
+            WaitUntilElementIsClickable(xpath, waitSeconds);
+            Browser.GetDriver().FindElement(xpath).SendKeys(Keys.Enter);
+        }
+
         public static bool IsElementClickable(By xpath)
         {
             bool status = true;
@@ -55,6 +62,12 @@ namespace UI.Utils
         public static void WaitUntilElementIsClickable(By xpath, int second)
         {
             new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(second)).Until(ExpectedConditions.ElementToBeClickable(xpath));
+        }
+
+        public static void InputTextInFieldByJS(By xpath, string keys)
+        {
+            WaitUntilElementIsVisible(xpath);
+            Browser.GetJSExecuter().ExecuteScript($"arguments[0].value='{keys}';", Browser.GetDriver().FindElement(xpath));
         }
     }
 }
