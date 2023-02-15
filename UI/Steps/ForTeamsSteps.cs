@@ -5,16 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using UI.Pages;
 
-namespace UI.Steps
-{
-    internal class ForTeamsSteps
-    {     
-        ForTeamsPage forTeamsPage = new ForTeamsPage();
-        public ForTeamsPage ClickOnVideoButton()
+namespace UI.Steps 
+    {
+    internal class ForTeamsSteps 
         {
-          forTeamsPage.CookiesNessAccept();
-          forTeamsPage.ClickOnWatchVideoButton();
-          return new ForTeamsPage();
+        ForTeamsPage forTeamsPage = new ForTeamsPage();
+        public ForTeamsPage ClickOnVideoButton() 
+            {
+            forTeamsPage.CookiesNessAccept();
+            forTeamsPage.ClickOnWatchVideoButton();
+            return new ForTeamsPage();
         }
     }
 }

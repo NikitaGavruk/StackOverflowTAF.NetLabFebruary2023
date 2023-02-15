@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+	<TestData>
+		<Credentials>
+			<Email>dotnet.laboratory@gmail.com</Email>
+			<Password>pass!@#P9</Password>
+		</Credentials>
+		<TagToSearch>rust</TagToSearch>
+	</TestData>
