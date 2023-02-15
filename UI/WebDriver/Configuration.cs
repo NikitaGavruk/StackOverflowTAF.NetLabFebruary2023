@@ -1,8 +1,4 @@
-﻿using System.Configuration;
-using System.IO;
-using System.Reflection;
-
-namespace AutomationTeamProject.WebDriver
+﻿namespace AutomationTeamProject.WebDriver
 {
     public class Configuration
     {
@@ -21,7 +17,7 @@ namespace AutomationTeamProject.WebDriver
         public static string ElementTimeout => GetEnvironmentVar("ElementTimeout", "30");
 
         //app.config Browser extraction
-        public static string Browser => GetEnvironmentVar("Browser", "Chrome");
+        public static string Browser => GetEnvironmentVar("Browser", "Firefox");
 
         //app.config starting Url  extraction
         public static string StartUrl => GetEnvironmentVar("StartUrl", "https://stackoverflow.com");

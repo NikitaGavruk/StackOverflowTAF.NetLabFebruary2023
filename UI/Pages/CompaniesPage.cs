@@ -19,7 +19,7 @@ namespace UI.Pages {
         private static readonly string fixedSuggestion = "//span[@class='s-tag rendered-element' and text()='{0}']";
         private static readonly string searchedCompanyGenericCompanyName = "//div[@class='company-list']/div[{0}]/div[3]/div[2]/h2/a";
         private static readonly string tagUnderSearchBox = "//div[@class='d-flex fd-row ai-baseline my12']/descendant::span[2][contains(text(),'rust')]";
-        private static readonly string tagToSearch = new XML_Reader(@"..\..\..\Tests\TestData.xml").GetTextFromNode("//TagToSearch");
+        private static readonly string tagToSearch = new XML_Reader(@"UI\Tests\TestData.xml").GetTextFromNode("//TagToSearch");
         
 
         public bool IsPageLoaded() =>

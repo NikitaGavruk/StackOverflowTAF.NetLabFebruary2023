@@ -5,12 +5,12 @@ using UI.Utils;
 namespace UI.Pages {
 
     internal class LoginPage:AbstractPage {
-
+        
         private static readonly By loginButtonFormContainer = By.Id("submit-button");
         private static readonly By loginButtonTopBar = By.XPath("//li/a[contains(@data-ga,'login button click')]");
         private static readonly By emailField = By.Id("email");
         private static readonly By passwordField = By.Id("password");
-        public static readonly By acceptCookiesbutton = By.XPath("//button[contains(text(),'Accept all')]");
+        
 
         public LoginPage InputEmail(string accountEmail) {
             WebDriverExtension.InputTextInField(emailField, 5, accountEmail);
@@ -27,8 +27,8 @@ namespace UI.Pages {
             return Activator.CreateInstance<T>();
         }
 
-        public void ClickAcceptCookies() =>
-            WebDriverExtension.ClickOnButton(acceptCookiesbutton, 5);
+        public static void ClickAcceptCookies() =>
+            WebDriverExtension.ClickOnButton(LandingPage.acceptCookiesbutton, 5);
 
     }
 

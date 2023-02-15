@@ -7,7 +7,7 @@ namespace AutomationTeamProject.WebDriver
 {
     public class Browser
     {
-        public static Browsertype _currentBrowser;
+        public static BrowserType _currentBrowser;
         private static Browser _currentInstance;
         private static string _browser;
         private static int ImplWait;
