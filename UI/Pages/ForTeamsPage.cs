@@ -25,12 +25,12 @@ namespace UI.Pages
 
         public bool IsVideoSuccesfulyOpen()
         {
-            return WebDriverExtension.IsElementVisible(videoFieldElement);
+            return WebDriverExtension.IsElementVisible(videoFieldElement,5);
         }
 
         public void CookiesNessAccept()
         {
-            if (WebDriverExtension.IsElementVisible(cookiesbuttonacElement))
+            if (WebDriverExtension.IsElementVisible(cookiesbuttonacElement, 5))
             {
                 WebDriverExtension.ClickOnButton(cookiesbuttonacElement);
             }

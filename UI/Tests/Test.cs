@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UI.Pages;
 using UI.Steps;
+using UI.Utils;
 
 namespace UI.Tests
 {
@@ -14,8 +15,6 @@ namespace UI.Tests
     internal class Test:BaseTest
     {
         GeneralPage generalPage = new GeneralPage();
-        MainPage mainPage = new MainPage();
-        SearchResultPage searchResultPage = new SearchResultPage();
         SearchResultPageSteps searchResultPageSteps = new SearchResultPageSteps();
 
         [Test]
@@ -28,18 +27,10 @@ namespace UI.Tests
         [Test]
         public void SearchTesting()
         {
-
-            //Verifying Clickability of search button 
-            Assert.That(mainPage.IsSearchBarVisible());
-            //Execute search
-            var searchResultPage mainPage.ExecuteSearchRequest(".gitignore").ClickEnter();
-            //Assert that the captcha page has been opened
-            Assert.That(WebUtils.IsCaptchaButtonExists());
-            //Dealing with captcha manually
-            WebUtils.DoCaptchaManually();
-            //Assert that The Search page is opened
+            Assert.That(generalPage.IsSearchBarVisible());
+            generalPage.ExecuteSearchRequest(".gitignore");
+            WebUtils.ExecuteCapthaManualy(100);
             Assert.That(searchResultPageSteps.IsSearchDoneCorrectly());
-
         }
     }
 }

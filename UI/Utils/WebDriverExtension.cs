@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SeleniumExtras.WaitHelpers;
 
 namespace UI.Utils
 {
     internal class WebDriverExtension
     {
+
         public static void ClickOnButton(By xpath)
         {
             WaitUntilElementIsVisible(xpath, 3);
@@ -19,19 +19,19 @@ namespace UI.Utils
             Browser.GetDriver().FindElement(xpath).Click();
         }
 
-        public static void ClickOnEnter(By xpath, int waitSeconds)
+        public static void ClickOnEnter(By xpath)
         {
-            WaitUntilElementIsVisible(xpath, waitSeconds);
-            WaitUntilElementIsClickable(xpath, waitSeconds);
+            WaitUntilElementIsVisible(xpath, 3);
+            WaitUntilElementIsClickable(xpath, 3);
             Browser.GetDriver().FindElement(xpath).SendKeys(Keys.Enter);
         }
 
-        public static bool IsElementClickable(By xpath)
+        public static bool IsElementVisible(By xpath, int seconds)
         {
             bool status = true;
             try
             {
-                WaitUntilElementIsClickable(xpath, 3);
+                new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementIsVisible(xpath));
             }
             catch (WebDriverTimeoutException)
             {
@@ -40,18 +40,36 @@ namespace UI.Utils
             return status;
         }
 
-        public static bool IsElementVisible(By xpath)
+        public static bool IsElementExists(By xpath, int seconds)
         {
             bool status = true;
             try
             {
-                WaitUntilElementIsVisible(xpath, 10);
+                new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementExists(xpath));
             }
             catch (WebDriverTimeoutException)
             {
                 status = false;
             }
             return status;
+        }
+        public static bool IsElementClickable(By xpath, int seconds)
+        {
+            bool status = true;
+            try
+            {
+                new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(xpath));
+            }
+            catch (WebDriverTimeoutException)
+            {
+                status = false;
+            }
+            return status;
+        }
+
+        public static void WaitUntilElementIsExists(By xpath, int seconds)
+        {
+            new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementExists(xpath));
         }
 
         public static void WaitUntilElementIsVisible(By xpath, int second)
@@ -66,7 +84,7 @@ namespace UI.Utils
 
         public static void InputTextInFieldByJS(By xpath, string keys)
         {
-            WaitUntilElementIsVisible(xpath);
+            WaitUntilElementIsVisible(xpath, 3);
             Browser.GetJSExecuter().ExecuteScript($"arguments[0].value='{keys}';", Browser.GetDriver().FindElement(xpath));
         }
     }

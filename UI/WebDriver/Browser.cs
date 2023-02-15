@@ -11,6 +11,7 @@ namespace AutomationTeamProject.WebDriver
         private static string _browser;
         private static int ImplWait;
         private static IWebDriver webDriver;
+        private static IJavaScriptExecutor _jsExecuter;
 
         // pars the parameter that ar taken from App.config
         private static void InitParams()
@@ -59,6 +60,12 @@ namespace AutomationTeamProject.WebDriver
             _currentInstance = null;
             webDriver = null;
             _browser = null;
+        }
+
+        public static IJavaScriptExecutor GetJSExecuter()
+        {
+            _jsExecuter = (IJavaScriptExecutor)GetDriver();
+            return _jsExecuter;
         }
     }
 }
