@@ -17,7 +17,7 @@
         public static string ElementTimeout => GetEnvironmentVar("ElementTimeout", "30");
 
         //app.config Browser extraction
-        public static string Browser => GetEnvironmentVar("Browser", "Firefox");
+        public static string Browser => GetEnvironmentVar("Browser", "Chrome");
 
         //app.config starting Url  extraction
         public static string StartUrl => GetEnvironmentVar("StartUrl", "https://stackoverflow.com");
