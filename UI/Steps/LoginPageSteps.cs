@@ -7,7 +7,7 @@ namespace UI.Steps {
         
         private readonly LoginPage loginPage = new LoginPage();
 
-        public HomePage Login(User user) {
+        public GeneralPage Login(User user) {
             LandingPage landing = new LandingPage();
             landing.ClickLogIn();
 
@@ -16,8 +16,8 @@ namespace UI.Steps {
 
             loginPage.InputEmail(user.email);
             loginPage.InputPassword(user.password);
-            loginPage.ClickLogIn<HomePage>();
-            return new HomePage();
+            loginPage.ClickLogIn<GeneralPage>();
+            return new GeneralPage();
         }
 
     }

@@ -1,4 +1,4 @@
-﻿using WaitersNamespace = OpenQA.Selenium.Support.UI;
+using WaitersNamespace = OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using System;
 using SeleniumExtras.WaitHelpers;
@@ -12,6 +12,16 @@ namespace UI.Utils {
             WaitUntilElementIsVisible(xpath, waitSeconds);
             WaitUntilElementIsClickable(xpath, waitSeconds);
             Browser.GetDriver().FindElement(xpath).Click();
+        }
+        public static void ClickOnButton(By xpath) {
+            WaitUntilElementIsVisible(xpath, 3);
+            WaitUntilElementIsClickable(xpath, 3);
+            Browser.GetDriver().FindElement(xpath).Click();
+        }
+        public static void ClickOnEnter(By xpath) {
+            WaitUntilElementIsVisible(xpath, 3);
+            WaitUntilElementIsClickable(xpath, 3);
+            Browser.GetDriver().FindElement(xpath).SendKeys(Keys.Enter);
         }
         public static string GetTextFromField(By xpath, int waitSeconds) {
             WaitUntilElementIsVisible(xpath, waitSeconds);
@@ -83,8 +93,8 @@ namespace UI.Utils {
             WaitUntilElementIsVisible(xpath, waitSeconds);
             Browser.GetActions().MoveToElement(Browser.GetDriver().FindElement(xpath)).SendKeys(keys).Perform();
         }
-        public static void InputTextInFieldByJS(By xpath, int waitSeconds, string keys) {
-            WaitUntilElementIsVisible(xpath, waitSeconds);
+        public static void InputTextInFieldByJS(By xpath, string keys) {
+            WaitUntilElementIsVisible(xpath, 3);
             Browser.GetJSExecuter().ExecuteScript($"arguments[0].value='{keys}';", Browser.GetDriver().FindElement(xpath));
         }
         public static void MouseDownByJS(By xpath, int waitSeconds) {

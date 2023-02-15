@@ -69,27 +69,25 @@
     <Compile Include="Exceptions\WebElementOperationException.cs" />
     <Compile Include="Pages\AbstractPage.cs" />
     <Compile Include="Pages\CompaniesPage.cs" />
+    <Compile Include="Pages\ForTeamsPage.cs" />
+    <Compile Include="Pages\GeneralPage.cs" />
     <Compile Include="Pages\GenericSearchedCompanyPage.cs" />
-    <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\LandingPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\SearchResultPage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Steps\CompanyPageSteps.cs" />
+    <Compile Include="Steps\ForTeamsSteps.cs" />
     <Compile Include="Steps\LoginPageSteps.cs" />
-    <Compile Include="Tests\Tests.cs" />
-    <Compile Include="Tests\BaseTests.cs" />
+    <Compile Include="Tests\BaseTest.cs" />
     <Compile Include="Utils\ReadFromXML.cs" />
     <Compile Include="Utils\WebDriverExtension.cs" />
     <Compile Include="Utils\WebUtils.cs" />
     <Compile Include="WebDriver\Browser.cs" />
     <Compile Include="WebDriver\Configuration.cs" />
     <Compile Include="WebDriver\WebDriverFactory.cs" />
-    <Compile Include="Tests\BaseTests.cs" />
     <Compile Include="Tests\Test.cs" />
-    <Compile Include="Utils\WebDriverExtension.cs" />
-    <Compile Include="Utils\WebUtils.cs" />
     <Compile Include="Steps\SearchResultPageSteps.cs" />
-    <Compile Include="Steps\ForTeamsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
