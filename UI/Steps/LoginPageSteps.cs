@@ -11,8 +11,8 @@ namespace UI.Steps {
             LandingPage landing = new LandingPage();
             landing.ClickLogIn();
 
-            if (WebDriverExtension.IsElementClickable(LoginPage.acceptCookiesbutton, 10))
-                loginPage.ClickAcceptCookies();
+            if (WebDriverExtension.IsElementExists(LandingPage.cookiePolicybanner, 10))
+                LandingPage.ClickAcceptCookies();
 
             loginPage.InputEmail(user.email);
             loginPage.InputPassword(user.password);
