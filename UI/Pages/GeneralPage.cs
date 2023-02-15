@@ -33,7 +33,7 @@ namespace UI.Pages
 
         public bool IsSearchBarVisible()
         {
-            return WebDriverExtension.IsElementClickable(searchBar, 5);
+            return WebDriverExtension.IsElementClickable(searchBar,5);
         }
         public SearchResultPage ExecuteSearchRequest(string searchWord)
         {
