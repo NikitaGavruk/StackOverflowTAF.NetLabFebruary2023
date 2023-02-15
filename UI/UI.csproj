@@ -69,8 +69,6 @@
     <Compile Include="Exceptions\WebElementOperationException.cs" />
     <Compile Include="Pages\AbstractPage.cs" />
     <Compile Include="Pages\CareersPage.cs" />
-    <Compile Include="Pages\GeneralPage.cs" />
-    <Compile Include="Pages\CompaniesPage.cs" />
     <Compile Include="Pages\ForTeamsPage.cs" />
     <Compile Include="Pages\GeneralPage.cs" />
     <Compile Include="Pages\GenericSearchedCompanyPage.cs" />
