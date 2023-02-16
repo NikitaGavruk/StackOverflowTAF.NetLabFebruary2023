@@ -13,7 +13,7 @@ namespace SlackOverFlow
         {
             Browser = Browser.Instance;
             Browser.WindowMaximaze();
-            Browser.NavigateTo(Configuration.StartUrl);
+            Browser.StartNavigate();
         }
 
         [TearDown]

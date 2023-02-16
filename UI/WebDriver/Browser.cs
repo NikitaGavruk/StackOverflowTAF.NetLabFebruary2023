@@ -26,7 +26,7 @@ namespace AutomationTeamProject.WebDriver
         private Browser()
         {
             InitParams();
-            webDriver = WebDriverFactory.GetDriver(_currentBrowser, ImplWait);
+            webDriver = WebDriverFactory.GetDriver(_currentBrowser);
         }
 
         public static Browser Instance => _currentInstance ?? (_currentInstance = new Browser());

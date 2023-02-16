@@ -13,7 +13,7 @@ namespace AutomationTeamProject.WebDriver
             Firefox
         }
 
-        public static IWebDriver GetDriver(BrowserType browser, int TimeoutSec)
+        public static IWebDriver GetDriver(BrowserType browser)
         {
             IWebDriver WebDriver = null;
             switch (browser)
