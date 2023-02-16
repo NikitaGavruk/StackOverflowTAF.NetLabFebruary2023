@@ -16,6 +16,14 @@ namespace UI.Pages
         private static readonly By searchBar = By.XPath("//input[@placeholder='Search…']");
         private static readonly By overFlowBlogFirstItem = By.XPath("//div[contains(@Class,'ow-break-word')]");
         private static readonly By companiesButton = By.XPath("//div[contains(text(),'Companies')]");
+        private static readonly By careerButtonElement = By.Id("company-careers");
+
+
+        public CareersPage GoToCareerPages()
+        {
+            WebDriverExtension.ClickOnButton(careerButtonElement);
+            return new CareersPage();
+        }
 
         public ForTeamsSteps GoToForTeamsPage()
         {
@@ -42,7 +50,6 @@ namespace UI.Pages
             WebDriverExtension.MouseDownByJS(companiesButton, 5);
             return new CompaniesPage();
         }
-
     }
 }
 

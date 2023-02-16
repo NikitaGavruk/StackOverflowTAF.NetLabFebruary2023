@@ -87,5 +87,12 @@ namespace UI.Tests
 
         }
 
+        [Test]
+        public void WhoweAreIsDisplay()
+        {
+            var CareersPage = generalPage.GoToCareerPages();
+            Assert.That(CareersPage.WhoWeAreIsVisiblse, Is.True);
+        }
+
     }
 }
