@@ -28,3 +28,5 @@ jobs:
       run: nuget restore AutomationTeamProject.sln
     - name: Build
       run: dotnet build --no-restore
+    - name: Build and run tests
+      run: dotnet test
