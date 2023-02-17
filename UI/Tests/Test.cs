@@ -25,14 +25,12 @@ namespace UI.Tests
         CompaniesPage companiesPage;
         CompanyPageSteps companiesPageSteps;
         GenericSearchedCompanyPage genericSearchedPage;
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         [Test]
         public void VideoFieldIsDisplayed()
         {
            var forTeamsPageVideo = generalPage.GoToForTeamsPage().ClickOnVideoButton();
            Assert.IsTrue(forTeamsPageVideo.IsVideoSuccesfulyOpen(), "Video did not open");
-           log.Info("dcrv4rg");
         }
 
         [Test]
