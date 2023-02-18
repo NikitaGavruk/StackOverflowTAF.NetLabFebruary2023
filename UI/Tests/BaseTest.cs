@@ -36,7 +36,7 @@ namespace SlackOverFlow
 
             if (NUnit_status.Equals(TestStatus.Failed)) {
                 string ScreenshotPath = ScreenshotTaker.TakeScreenShot();
-                logger.Error("Test found error. Screenshots has been taken", TestContext.CurrentContext.Result.Message);
+                logger.Error("Test found error. Screenshot has been taken, ", TestContext.CurrentContext.Result.Message);
                 testCase.Log(extentStatus,
                     "Test ended with status " + TestContext.CurrentContext.Result.Outcome.Status.ToString()
                     + testCase.AddScreenCaptureFromPath(Environment.CurrentDirectory+@"\"+ScreenshotPath));
