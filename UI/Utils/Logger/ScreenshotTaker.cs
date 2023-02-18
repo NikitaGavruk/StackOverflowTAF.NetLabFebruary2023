@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System;
 using System.Drawing;
+using UI.Exceptions;
 
 namespace UI.Utils.Logger {
 
@@ -39,7 +40,7 @@ namespace UI.Utils.Logger {
             }
         }
 
-        public static void TakeScreenShot(string saveDirectory= @"UI\bin\Debug\Screenshots") {
+        public static string TakeScreenShot(string saveDirectory= @"UI\bin\Debug\Screenshots") {
             if (!Directory.Exists(saveDirectory))
                 Directory.CreateDirectory(saveDirectory);
             else {
@@ -47,20 +48,28 @@ namespace UI.Utils.Logger {
                     DeleteRepeatedFiles(saveDirectory, TestContext.CurrentContext.Test.Name, 5);
                 }
                 catch (Exception exe) {
-                    logger.Error("Screenshot Was Not Taken", exe.Message);
+                    logger.Error("Old Screenshots Were Not Deleted", exe.Message);
                 }
             }
 
-            Screenshot screen = ((ITakesScreenshot)GetDriver()).GetScreenshot();
-            byte[] array = screen.AsByteArray;
-            string path = String.Format(saveDirectory+@"\{0}_{1}.{2}", 
-                DateTime.UtcNow.ToString("dd-MM-yyyTHH-mm-ss"), 
-                TestContext.CurrentContext.Test.Name, 
-                ImageFormat.Jpeg.ToString().ToLower());
+            string path = String.Format(saveDirectory + @"\{0}_{1}.{2}",
+                    DateTime.UtcNow.ToString("dd-MM-yyyTHH-mm-ss"),
+                    TestContext.CurrentContext.Test.Name,
+                    ImageFormat.Jpeg.ToString().ToLower());
+            
+            try {
+                Screenshot screen = ((ITakesScreenshot)GetDriver()).GetScreenshot();
+                byte[] array = screen.AsByteArray;
 
-            using(Image image = Image.FromStream(new MemoryStream(array, false))) {
-                image.Save(path);
+                using (Image image = Image.FromStream(new MemoryStream(array, false))) {
+                    image.Save(path);
+                }
             }
+            catch(Exception exe) {
+                logger.Error("Screenshot Was Not Taken", exe.Message);
+                throw new LoggerException("Screenshot Was Not Taken");
+            }
+            return path;
         }
 
     }

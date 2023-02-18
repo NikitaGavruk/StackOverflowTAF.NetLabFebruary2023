@@ -449,6 +449,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Exceptions\LoggerException.cs" />
     <Compile Include="Exceptions\WebElementOperationException.cs" />
     <Compile Include="Pages\AbstractPage.cs" />
     <Compile Include="Pages\CompaniesPage.cs" />
