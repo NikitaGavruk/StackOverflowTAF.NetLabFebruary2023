@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using AutomationTeamProject.WebDriver;
+using NUnit.Framework;
 using SlackOverFlow;
 using System;
 using System.Collections.Generic;
@@ -90,8 +91,9 @@ namespace UI.Tests
         [Test]
         public void WhoweAreIsDisplay()
         {
+            Browser.NavigateTo("https://stackoverflow.co/");
             var CareersPage = generalPage.GoToCareerPages();
-            Assert.That(CareersPage.WhoWeAreIsVisiblse, Is.True);
+            Assert.That(CareersPage.WhoWeAreIsVisiblse, Is.True, "the element 'Who we Are' is not visible ");
         }
 
     }
