@@ -3,6 +3,7 @@ using UI.Pages;
 using UI.Utils;
 
 namespace UI.Steps {
+
     internal class LoginPageSteps {
         
         private readonly LoginPage loginPage = new LoginPage();
@@ -10,10 +11,7 @@ namespace UI.Steps {
         public GeneralPage Login(User user) {
             LandingPage landing = new LandingPage();
             landing.ClickLogIn();
-
-            if (WebDriverExtension.IsElementExists(LandingPage.cookiePolicybanner, 10))
-                LandingPage.ClickAcceptCookies();
-
+            WebUtils.AcceptAllCookies();
             loginPage.InputEmail(user.email);
             loginPage.InputPassword(user.password);
             loginPage.ClickLogIn<GeneralPage>();
@@ -21,4 +19,5 @@ namespace UI.Steps {
         }
 
     }
+
 }

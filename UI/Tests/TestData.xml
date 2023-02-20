@@ -5,4 +5,5 @@
 			<Password>pass!@#P9</Password>
 		</Credentials>
 		<TagToSearch>rust</TagToSearch>
+		<SearchInGeneral>.gitignore</SearchInGeneral>
 	</TestData>

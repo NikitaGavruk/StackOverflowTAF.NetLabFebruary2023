@@ -12,12 +12,12 @@ namespace UI.Pages
 {
     internal class GeneralPage : AbstractPage
     {
-        private static readonly By forTeamsButtonElement = By.XPath("//a[contains(text(),'For Teams')] ");
-        private static readonly By searchBar = By.XPath("//input[@placeholder='Search…']");
-        private static readonly By overFlowBlogFirstItem = By.XPath("//div[contains(@Class,'ow-break-word')]");
+
+        private static readonly By forTeamsButtonElement = By.XPath("//a[contains(text(),'For Teams')]");
+        private static readonly By searchBar = By.Name("q");
+        private static readonly By overFlowBlogFirstItem = By.XPath("(//div[contains(@Class,'ow-break-word')])[1]");
         private static readonly By companiesButton = By.XPath("//div[contains(text(),'Companies')]");
         private static readonly By careerButtonElement = By.Id("company-careers");
-
 
         public CareersPage GoToCareerPages()
         {
@@ -35,6 +35,7 @@ namespace UI.Pages
         {
             return WebDriverExtension.IsElementClickable(searchBar,5);
         }
+
         public SearchResultPage ExecuteSearchRequest(string searchWord)
         {
             WebDriverExtension.InputTextInFieldByJS(searchBar, searchWord);
@@ -45,12 +46,13 @@ namespace UI.Pages
         public bool IsPageLoaded() =>
             WebDriverExtension.IsElementClickable(overFlowBlogFirstItem, 5);
 
-
         public CompaniesPage ClickOnCompaniesButton() {
             WebDriverExtension.MouseDownByJS(companiesButton, 5);
             return new CompaniesPage();
         }
+
     }
+
 }
 
 

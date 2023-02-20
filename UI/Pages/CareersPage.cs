@@ -10,11 +10,14 @@ namespace UI.Pages
 {
     internal class CareersPage : AbstractPage
     {
+
         public static readonly By WhoWeAreElement = By.XPath("//h2[contains(text(), \"Who we are\")]");
 
         public bool WhoWeAreIsVisiblse()
         {
            return WebDriverExtension.IsElementVisible(WhoWeAreElement,5);
         }
+
     }
+
 }

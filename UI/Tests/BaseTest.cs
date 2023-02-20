@@ -6,6 +6,7 @@ namespace SlackOverFlow
 {
     public class BaseTest
     {
+
         protected static Browser Browser;
       
         [SetUp]
@@ -21,5 +22,7 @@ namespace SlackOverFlow
         {
             Browser.QuiteBrowser();
         }
+
     }
+
 }

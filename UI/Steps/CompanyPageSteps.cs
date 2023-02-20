@@ -2,10 +2,10 @@
 using UI.Pages;
 
 namespace UI.Steps {
+
     internal class CompanyPageSteps {
 
         private static readonly string tagToSearch = new XML_Reader("UI/Tests/TestData.xml").GetTextFromNode("//TagToSearch");
-
         CompaniesPage companyPage = new CompaniesPage();
 
         public bool IsFilterAppliedCorrectly(out int count) {
@@ -17,4 +17,5 @@ namespace UI.Steps {
         }
 
     }
+
 }

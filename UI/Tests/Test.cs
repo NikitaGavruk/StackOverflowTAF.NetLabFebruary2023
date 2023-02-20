@@ -16,12 +16,14 @@ namespace UI.Tests
     [TestFixture]
     internal class Test:BaseTest
     {
+
         GeneralPage generalPage = new GeneralPage();
         SearchResultPageSteps searchResultPageSteps = new SearchResultPageSteps();
         private static readonly XML_Reader xmlReader = new XML_Reader(@"UI\Tests\TestData.xml");
         private static readonly string email = xmlReader.GetTextFromNode("//Email");
         private static readonly string password = xmlReader.GetTextFromNode("//Password");
         private static readonly string tagToSearch = xmlReader.GetTextFromNode("//TagToSearch");
+        private static readonly string searchInGeneral = xmlReader.GetTextFromNode("//SearchInGeneral");
         User user = new User(email, password);
         CompaniesPage companiesPage;
         CompanyPageSteps companiesPageSteps;
@@ -38,7 +40,7 @@ namespace UI.Tests
         public void SearchTesting()
         {
             Assert.That(generalPage.IsSearchBarVisible());
-            generalPage.ExecuteSearchRequest(".gitignore");
+            generalPage.ExecuteSearchRequest(searchInGeneral);
             WebUtils.ExecuteCapthaManualy(100);
             Assert.That(searchResultPageSteps.IsSearchDoneCorrectly());
         }
@@ -97,4 +99,5 @@ namespace UI.Tests
         }
 
     }
+
 }

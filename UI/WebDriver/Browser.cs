@@ -7,6 +7,7 @@ namespace AutomationTeamProject.WebDriver
 {
     public class Browser
     {
+
         public static BrowserType _currentBrowser;
         private static Browser _currentInstance;
         private static string _browser;
@@ -15,7 +16,6 @@ namespace AutomationTeamProject.WebDriver
         private static Actions _actions;
         private static IJavaScriptExecutor _jsExecuter;
 
-        // pars the parameter that ar taken from App.config
         private static void InitParams()
         {
             ImplWait = Convert.ToInt32(Configuration.ElementTimeout);
@@ -31,31 +31,26 @@ namespace AutomationTeamProject.WebDriver
 
         public static Browser Instance => _currentInstance ?? (_currentInstance = new Browser());
         
-        //Get the Driver
         public static IWebDriver GetDriver()
         {
             return webDriver;
         }
         
-        //Windows maximaizer
         public static void WindowMaximaze()
         {
             webDriver.Manage().Window.Maximize();
         }
 
-        //Navigator
         public static void NavigateTo(string url)
         {
             webDriver.Navigate().GoToUrl(url);
         }  
         
-        //Navigator
         public static void StartNavigate()
         {
             webDriver.Navigate().GoToUrl(Configuration.StartUrl);
         }
 
-        //Quit the browser
         public static void QuiteBrowser()
         {
             webDriver.Quit();
@@ -64,13 +59,11 @@ namespace AutomationTeamProject.WebDriver
             _browser = null;
         }
 
-        //get Actions
         public static Actions GetActions() {
             _actions = new Actions(GetDriver());
             return _actions;
         }
 
-        //Get JS Executer
         public static IJavaScriptExecutor GetJSExecuter() {
             _jsExecuter = (IJavaScriptExecutor)GetDriver();
             return _jsExecuter;
