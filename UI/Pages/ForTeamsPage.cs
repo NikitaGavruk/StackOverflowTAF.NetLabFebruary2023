@@ -13,9 +13,9 @@ namespace UI.Pages
 {
     internal class ForTeamsPage : AbstractPage
     {
+
         By videoButtonElement = By.XPath("//a[contains(text(),' Watch overview video')]");
         By videoFieldElement = By.XPath("//aside[@class='s-modal']");
-        By cookiesbuttonacElement = By.Id("onetrust-reject-all-handler");
 
         public ForTeamsPage ClickOnWatchVideoButton()
         {
@@ -28,12 +28,6 @@ namespace UI.Pages
             return WebDriverExtension.IsElementVisible(videoFieldElement,5);
         }
 
-        public void CookiesNessAccept()
-        {
-            if (WebDriverExtension.IsElementVisible(cookiesbuttonacElement, 5))
-            {
-                WebDriverExtension.ClickOnButton(cookiesbuttonacElement);
-            }
-        }
     }
+
 }

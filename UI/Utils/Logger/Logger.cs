@@ -48,7 +48,6 @@ namespace UI.Utils.Logger {
                 return testStatus;
             }
             
-
             public static ExtentReports ConfigureExtentReporter() {
                 string path = String.Format(@"UI\bin\Debug\Reports" + @"\{0}_TestRun",
                     DateTime.UtcNow.ToString("dd-MM-yyyTHH-mm-ss"));

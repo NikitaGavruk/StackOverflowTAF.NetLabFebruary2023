@@ -5,8 +5,10 @@ using System;
 
 namespace AutomationTeamProject.WebDriver
 {
+
     public class WebDriverFactory
     {
+
         public enum BrowserType
         {
             Chrome,
@@ -31,5 +33,7 @@ namespace AutomationTeamProject.WebDriver
             }
             return WebDriver;
         }
+
     }
+
 }
