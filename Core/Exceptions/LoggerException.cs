@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace UI.Exceptions {
+namespace Core.Exceptions {
 
-    internal class LoggerException:Exception {
+    public class LoggerException : Exception {
 
         public LoggerException(string message) : base(message) { }
 

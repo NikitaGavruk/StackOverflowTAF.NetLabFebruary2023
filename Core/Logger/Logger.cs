@@ -7,14 +7,14 @@ using System.IO;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
-namespace UI.Utils.Logger {
+namespace Core.Logger {
 
     public class Logger {
 
         private readonly ILog log;
 
         public Logger(Type type) {
-            log= LogManager.GetLogger(type);
+            log = LogManager.GetLogger(type);
         }
 
         public void Debug(string methodName) {
@@ -26,7 +26,7 @@ namespace UI.Utils.Logger {
         }
 
         public void Error(string message, string exe) {
-            log.Error(message+" outcome:"+exe);
+            log.Error(message + " outcome:" + exe);
         }
 
         public static class ExtentReporter {
@@ -35,19 +35,24 @@ namespace UI.Utils.Logger {
                 Status testStatus;
                 switch (status) {
                     case TestStatus.Passed:
-                        testStatus = Status.Pass; break;
+                        testStatus = Status.Pass;
+                        break;
                     case TestStatus.Failed:
-                        testStatus = Status.Fail; break;
+                        testStatus = Status.Fail;
+                        break;
                     case TestStatus.Skipped:
-                        testStatus = Status.Skip; break;
+                        testStatus = Status.Skip;
+                        break;
                     case TestStatus.Warning:
-                        testStatus = Status.Warning; break;
+                        testStatus = Status.Warning;
+                        break;
                     default:
-                        testStatus = Status.Fail; break;
+                        testStatus = Status.Fail;
+                        break;
                 }
                 return testStatus;
             }
-            
+
             public static ExtentReports ConfigureExtentReporter() {
                 string path = String.Format(@"UI\bin\Debug\Reports" + @"\{0}_TestRun",
                     DateTime.UtcNow.ToString("dd-MM-yyyTHH-mm-ss"));
@@ -60,7 +65,7 @@ namespace UI.Utils.Logger {
                     Logger logger = new Logger(typeof(ExtentReporter));
                     logger.Error("Old Reports Directories Were Not Deleted", exe.Message);
                 }
-                
+
 
                 ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(path + @"\index.html");
 
@@ -82,7 +87,7 @@ namespace UI.Utils.Logger {
                         }
                     }
                 }
-                catch(Exception exe) {
+                catch (Exception exe) {
                     Logger logger = new Logger(typeof(ExtentReporter));
                     logger.Error("The Old Reports Directories Were Not Deleted", exe.ToString());
                     return false;

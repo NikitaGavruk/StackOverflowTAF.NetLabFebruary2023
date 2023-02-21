@@ -5,9 +5,10 @@ using System.Drawing.Imaging;
 using System.IO;
 using System;
 using System.Drawing;
-using UI.Exceptions;
+using Core.Logger;
+using Core.Exceptions;
 
-namespace UI.Utils.Logger {
+namespace UI.Utils {
 
     internal static class ScreenshotTaker {
 
@@ -40,7 +41,7 @@ namespace UI.Utils.Logger {
             }
         }
 
-        public static string TakeScreenShot(string saveDirectory= @"UI\bin\Debug\Screenshots") {
+        public static string TakeScreenShot(string saveDirectory = @"UI\bin\Debug\Screenshots") {
             if (!Directory.Exists(saveDirectory))
                 Directory.CreateDirectory(saveDirectory);
             else {
@@ -56,7 +57,7 @@ namespace UI.Utils.Logger {
                     DateTime.UtcNow.ToString("dd-MM-yyyTHH-mm-ss"),
                     TestContext.CurrentContext.Test.Name,
                     ImageFormat.Jpeg.ToString().ToLower());
-            
+
             try {
                 Screenshot screen = ((ITakesScreenshot)GetDriver()).GetScreenshot();
                 byte[] array = screen.AsByteArray;
@@ -65,7 +66,7 @@ namespace UI.Utils.Logger {
                     image.Save(path);
                 }
             }
-            catch(Exception exe) {
+            catch (Exception exe) {
                 logger.Error("Screenshot Was Not Taken", exe.Message);
                 throw new LoggerException("Screenshot Was Not Taken");
             }

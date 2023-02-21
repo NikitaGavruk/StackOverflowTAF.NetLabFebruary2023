@@ -2,11 +2,12 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.DevTools;
 using AutomationTeamProject.WebDriver;
-using static UI.Utils.Logger.Logger;
-using UI.Utils.Logger;
+using static Core.Logger.Logger;
+using Core.Logger;
 using NUnit.Framework.Interfaces;
 using AventStack.ExtentReports;
 using System;
+using UI.Utils;
 
 namespace SlackOverFlow
 {
