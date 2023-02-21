@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace API.RestUtils
 {
@@ -24,6 +21,6 @@ namespace API.RestUtils
             string responceBody = reader.ReadToEnd();
             return responceBody;
         }
-        public static List<T> DeserializeRootObject(string body) => JsonConvert.DeserializeObject<List<T>>(body);
+        public static List<T> DeserializeRootObject<T>(string body) => JsonConvert.DeserializeObject<List<T>>(body);
     }
 }
