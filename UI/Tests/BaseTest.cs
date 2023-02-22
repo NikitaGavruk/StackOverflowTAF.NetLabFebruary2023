@@ -27,6 +27,7 @@ namespace SlackOverFlow
             Browser = Browser.Instance;
             Browser.WindowMaximaze();
             Browser.StartNavigate();
+            logger.Info("Successfully went to General page");
         }
 
         [TearDown]
