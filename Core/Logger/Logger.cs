@@ -54,7 +54,7 @@ namespace Core.Logger {
             }
 
             public static ExtentReports ConfigureExtentReporter() {
-                string path = String.Format(@"UI\bin\Debug\Reports" + @"\{0}_TestRun",
+                string path = String.Format(@"Reports" + @"\{0}_TestRun",
                     DateTime.UtcNow.ToString("dd-MM-yyyTHH-mm-ss"));
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
@@ -79,7 +79,8 @@ namespace Core.Logger {
             public static bool DeleteReports(int deleteFactor) {
                 if (deleteFactor < 1)
                     throw new ArgumentException("The Count of Folders to Delete Has to Be at Least One");
-                string[] reportDirectories = Directory.GetDirectories($@"{Environment.CurrentDirectory}\UI\bin\Debug\Reports");
+
+                string[] reportDirectories = Directory.GetDirectories($@"{Environment.CurrentDirectory}\Reports");
                 try {
                     if (reportDirectories.Length >= deleteFactor) {
                         foreach (var item in reportDirectories) {

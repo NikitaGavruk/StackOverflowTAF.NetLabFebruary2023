@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Methods>
+	<ImplicitAuthorization>oauth/dialog</ImplicitAuthorization>
+		<Per-SiteMethods>
+		<answers>
+			<item>
+				<key>2.3/answers/{0}/upvote</key>
+				<value>32393026</value>
+			</item>
+		</answers>
+	</Per-SiteMethods>
+</Methods>
