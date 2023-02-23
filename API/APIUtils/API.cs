@@ -1,12 +1,4 @@
-﻿using API.Schema;
-using OpenQA.Selenium.DevTools.V107.Network;
-using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using RestSharp;
 
 namespace API.APIUtils
 {
