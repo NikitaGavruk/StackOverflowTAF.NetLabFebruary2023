@@ -41,7 +41,7 @@ namespace UI.Tests
         {
             Assert.That(generalPage.IsSearchBarVisible());
             generalPage.ExecuteSearchRequest(searchInGeneral);
-            logger.Info("There is a 100 seconds timer set for doing captcha manually");
+            logger.Debug("There is a 100 seconds timer set for doing captcha manually");
             WebUtils.ExecuteCapthaManualy(100);
             logger.Error("If captcha isn't done within 100 seconds, the test will fail", "TimeOutException");
             Assert.That(searchResultPageSteps.IsSearchDoneCorrectly());
