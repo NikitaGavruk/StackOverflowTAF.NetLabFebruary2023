@@ -35,14 +35,16 @@ namespace SlackOverFlow
             TestStatus NUnit_status = TestContext.CurrentContext.Result.Outcome.Status;
             Status extentStatus = ExtentReporter.TestStatusConvert(TestContext.CurrentContext.Result.Outcome.Status);
 
-            if (NUnit_status.Equals(TestStatus.Failed)) {
+            if (NUnit_status.Equals(TestStatus.Failed))
+            {
                 string ScreenshotPath = ScreenshotTaker.TakeScreenShot();
                 logger.Error("Test found error. Screenshot has been taken, ", TestContext.CurrentContext.Result.Message);
                 testCase.Log(extentStatus,
                     "Test ended with status " + TestContext.CurrentContext.Result.Outcome.Status.ToString()
-                    + testCase.AddScreenCaptureFromPath(Environment.CurrentDirectory+@"\"+ScreenshotPath));
+                    + testCase.AddScreenCaptureFromPath(Environment.CurrentDirectory + @"\" + ScreenshotPath));
             }
-            else {
+            else
+            {
                 logger.Info("Test ended with Status: " + TestContext.CurrentContext.Result.Outcome.Status.ToString());
                 testCase.Log(extentStatus,
                     "Test ended with status " + TestContext.CurrentContext.Result.Outcome.Status.ToString());
@@ -51,7 +53,8 @@ namespace SlackOverFlow
         }
 
         [OneTimeTearDown]
-        public void OneTimeTearDown() {
+        public void OneTimeTearDown()
+        {
             ExtentReporter.ExtentFlush(extentReporter);
         }
 

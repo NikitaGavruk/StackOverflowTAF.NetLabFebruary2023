@@ -39,11 +39,13 @@ namespace UI.Tests
         [Test]
         public void SearchTesting()
         {
+            logger.Info("Make sure we are on the Website");
             Assert.That(generalPage.IsSearchBarVisible());
             generalPage.ExecuteSearchRequest(searchInGeneral);
-            logger.Debug("There is a 100 seconds timer set for doing captcha manually");
+            logger.Info("There is a 100 seconds timer set for doing captcha manually");
             WebUtils.ExecuteCapthaManualy(100);
             logger.Error("If captcha isn't done within 100 seconds, the test will fail", "TimeOutException");
+            logger.Info("Check whether search works");
             Assert.That(searchResultPageSteps.IsSearchDoneCorrectly());
         }
 
