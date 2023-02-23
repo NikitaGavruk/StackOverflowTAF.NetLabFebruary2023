@@ -48,44 +48,47 @@ namespace UI.Tests
         [Test]
         public void TagExists() {
 
-            //Login 
+            logger.Debug("Log into The system");
             generalPage = new LoginPageSteps().Login(user);
-            //Assert that the home page has loaded correctly
+            logger.Debug("Assert that the home page has loaded correctly");
             Assert.That(generalPage.IsPageLoaded());
 
-            //Go To The CompaniesPage
+            logger.Debug("CLick On the 'Companies' Button");
             companiesPage = generalPage.ClickOnCompaniesButton();
-            //Assert that the companies page has loaded correctly
+            logger.Debug("Assert that the companies page has loaded correctly");
             Assert.That(companiesPage.IsPageLoaded());
 
-            //Click On The Filter By Tag Button
+            logger.Debug("Click On The Filter By Tag Button");
             companiesPage.ClickonFilterByTagButton();
-            //Assert that The FilterPane Pane is Visible
+            logger.Debug("Assert that The FilterPane Pane is Visible");
             Assert.That(companiesPage.IsFilterPaneVisible());
 
-            //Input "rust" in the searchbox of the filter by tag pane
+            logger.Debug("Input 'rust' in the searchbox of the filter by tag pane");
             companiesPage.InputInTheFilterByTagSearchBox();
-            //Assert that the suggestions appear after inputting
+            logger.Debug("Assert that the suggestions appear after inputting");
             Assert.That(companiesPage.IsSuggestionsPaneVisisble);
 
-            //Click on the suggestion if it exactly matches the input tag
+            logger.Debug("Click on the suggestion if it exactly matches the input tag");
             companiesPage.ClickOnTheElementThatCompletelyMatchesTheSearchCriteria();
-            //Assert thatthe suggestions pane disappeared and the clicked tag got fixed
-            //on the filter by tag searchbox
+            logger.Debug("Assert that the suggestions pane disappeared");
             Assert.That(companiesPage.IsSuggestionsPaneDisappeared());
+            logger.Debug("Assert that the clicked tag got fixed on the 'filter by tag' searchbox");
             Assert.That(companiesPage.IsClickedTagFixedOnTheSearchBar());
 
-            //Click on the apply filter button
+            logger.Debug("Click on the apply filter button");
             companiesPage.ClickApplyFilterButton();
             companiesPageSteps = new CompanyPageSteps();
-            //Assert That the correct events happened after clicking apply filter 
+            logger.Debug("Assert That\n1. The Company Count Is Displayed under The SearchBox" +
+                        "\n2. The Count Of Selected Tags Is Displayed within the 'Filter By Tag' Button" +
+                        "\n3. The Selected Tags Appeared Under The SearchBox");
             Assert.That(companiesPageSteps.IsFilterAppliedCorrectly(out int countOfCompanies));
 
-            //Create Instance of a class which included all the URLs for all the 
-            //pages returned By search
+            logger.Debug("Create Instance of a class which included all the URLs for all the " +
+                         "pages returned By search");
             genericSearchedPage =
             GenericSearchedCompanyPage.CreateInstance(companiesPage.GetUrls(countOfCompanies));
-            //Assert That The Searched Tag is included in each Company's techstack list
+            logger.Debug("Go To each Company's page and " +
+                         "Assert That The Searched Tag is included in each Company's techstack list");
             Assert.That(genericSearchedPage.IsTagExists(countOfCompanies, tagToSearch));
 
         }
