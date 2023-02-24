@@ -33,6 +33,7 @@ namespace UI.Tests
         public void VideoFieldIsDisplayed()
         {
            var forTeamsPageVideo = generalPage.GoToForTeamsPage().ClickOnVideoButton();
+            logger.Info("Successfully went to For Teams page and click Video button");
            Assert.IsTrue(forTeamsPageVideo.IsVideoSuccesfulyOpen(), "Video did not open");
         }
 

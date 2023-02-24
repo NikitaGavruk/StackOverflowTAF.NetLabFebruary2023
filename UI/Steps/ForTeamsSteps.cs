@@ -13,15 +13,10 @@ namespace UI.Steps {
     internal class ForTeamsSteps {  
         
         ForTeamsPage forTeamsPage = new ForTeamsPage();
-        Logger logger;
 
         public ForTeamsPage ClickOnVideoButton() {
-            logger = new Logger(GetType());
-            logger.Info("Successfully went to ForTeams page");
             WebUtils.AcceptAllCookies();
-            logger.Info("Cookies accepted");
             forTeamsPage.ClickOnWatchVideoButton();
-            logger.Info("Video Field displayed");
             return new ForTeamsPage();
         }
 
