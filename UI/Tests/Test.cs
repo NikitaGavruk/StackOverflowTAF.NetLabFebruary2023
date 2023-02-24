@@ -34,8 +34,12 @@ namespace UI.Tests
         [Test]
         public void VideoFieldIsDisplayed()
         {
-           var forTeamsPageVideo = generalPage.GoToForTeamsPage().ClickOnVideoButton();
-           Assert.IsTrue(forTeamsPageVideo.IsVideoSuccesfulyOpen(), "Video did not open");
+            logger.Info("Go to \"For Teams\" Page");
+            var forTeamsPageVideoStep = generalPage.GoToForTeamsPage();
+            logger.Info("Click on Video button");
+            var forTeamsPageVideo = forTeamsPageVideoStep.ClickOnVideoButton();
+            logger.Info("Verify that Video field successfully open");
+            Assert.IsTrue(forTeamsPageVideo.IsVideoSuccesfulyOpen(), "Video did not open");
         }
 
         [Test]
