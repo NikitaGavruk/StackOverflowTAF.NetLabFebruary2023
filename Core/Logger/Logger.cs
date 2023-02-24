@@ -59,13 +59,12 @@ namespace Core.Logger {
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
                 try {
-                    DeleteReports(5);
+                    DeleteReports(6);
                 }
                 catch (Exception exe) {
                     Logger logger = new Logger(typeof(ExtentReporter));
                     logger.Error("Old Reports Directories Were Not Deleted", exe.Message);
                 }
-
 
                 ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(path + @"\index.html");
 
