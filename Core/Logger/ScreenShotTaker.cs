@@ -1,14 +1,13 @@
-﻿using AutomationTeamProject.WebDriver;
-using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using NUnit.Framework;
 using System.Drawing.Imaging;
 using System.IO;
 using System;
 using System.Drawing;
-using Core.Logger;
 using Core.Exceptions;
+using OpenQA.Selenium;
+using AutomationTeamProject.WebDriver;
 
-namespace UI.Utils {
+namespace Core.Logger {
 
     internal static class ScreenshotTaker {
 
@@ -41,7 +40,7 @@ namespace UI.Utils {
             }
         }
 
-        public static string TakeScreenShot(string saveDirectory = @"Screenshots") {
+        public static string TakeScreenShot(string saveDirectory = @"UI\bin\Debug\Screenshots") {
             if (!Directory.Exists(saveDirectory))
                 Directory.CreateDirectory(saveDirectory);
             else {

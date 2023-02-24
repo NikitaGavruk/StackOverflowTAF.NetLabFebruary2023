@@ -1,3 +1,4 @@
+using Core.Utils;
 using OpenQA.Selenium;
 using System;
 using UI.Utils;
@@ -9,7 +10,7 @@ namespace UI.Pages
 
         private static readonly By searchPageTitle = By.XPath("//h1[contains(text(),'Search Results')]");
         private static readonly string searchResult = "//div[contains(text(),'Results for {0}')]";
-        private static readonly string searchInGeneral = new XML_Reader(@"UI\Tests\TestData.xml").GetTextFromNode("//SearchInGeneral");
+        private static readonly string searchInGeneral = new XML_Reader(@"..\..\Tests\TestData.xml").GetTextFromNode("//SearchInGeneral");
 
         public bool IsSearchPageTitleExists()
         {

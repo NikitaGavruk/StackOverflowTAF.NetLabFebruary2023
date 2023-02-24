@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Core.Utils;
+using OpenQA.Selenium;
 using System;
 using System.Text.RegularExpressions;
 using UI.Exceptions;
@@ -19,7 +20,7 @@ namespace UI.Pages {
         private static readonly string filtersUnderSearchBox = "//button[contains(text(),'Clear filters')]//preceding-sibling::span[contains(text(),'{0}')]";
         private static readonly string fixedSuggestion = "//span[@class='s-tag rendered-element' and text()='{0}']";
         private static readonly string searchedCompanyGenericCompanyName = "//div[@class='company-list']/div[{0}]//descendant::h2/a";
-        private static readonly string tagToSearch = new XML_Reader(@"UI\Tests\TestData.xml").GetTextFromNode("//TagToSearch");
+        private static readonly string tagToSearch = new XML_Reader(@"..\..\Tests\TestData.xml").GetTextFromNode("//TagToSearch");
         
         public bool IsPageLoaded() =>
             WebDriverExtension.IsElementClickable(firstCompanyLogoInCompanyList, 5);

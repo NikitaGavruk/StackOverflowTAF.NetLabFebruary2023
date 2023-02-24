@@ -1,9 +1,9 @@
-﻿using System.Xml;
-using System;
+﻿using System;
+using System.Xml;
 
-namespace UI.Utils {
+namespace Core.Utils {
 
-    internal class XML_Reader {
+    public class XML_Reader {
 
         private XmlDocument doc;
 

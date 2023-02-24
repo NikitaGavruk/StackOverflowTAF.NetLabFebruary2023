@@ -464,7 +464,6 @@
     <Compile Include="Steps\ForTeamsSteps.cs" />
     <Compile Include="Steps\LoginPageSteps.cs" />
     <Compile Include="Tests\BaseTest.cs" />
-    <Compile Include="Utils\ReadFromXML.cs" />
     <Compile Include="Utils\ScreenshotTaker.cs" />
     <Compile Include="Utils\WebDriverExtension.cs" />
     <Compile Include="Utils\WebUtils.cs" />
