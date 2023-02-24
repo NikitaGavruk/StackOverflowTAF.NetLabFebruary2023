@@ -42,11 +42,11 @@ namespace UI.Tests
         {
             logger.Info("Verify search bar is visible");
             Assert.That(generalPage.IsSearchBarVisible());
+            logger.Info("Execute search request");
             generalPage.ExecuteSearchRequest(searchInGeneral);
             logger.Info("There is a 100 seconds timer set for doing captcha manually");
             WebUtils.ExecuteCapthaManualy(100);
             logger.Error("If captcha isn't done within 100 seconds, the test will fail", exception.ToString());
-            logger.Info("Execute search request");
             Assert.That(searchResultPageSteps.IsSearchDoneCorrectly());
         }
 
