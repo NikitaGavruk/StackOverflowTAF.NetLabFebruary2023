@@ -29,6 +29,7 @@ namespace UI.Tests
         CompaniesPage companiesPage;
         CompanyPageSteps companiesPageSteps;
         GenericSearchedCompanyPage genericSearchedPage;
+        TimeoutException exception = new TimeoutException();   
 
         [Test]
         public void VideoFieldIsDisplayed()
@@ -40,9 +41,13 @@ namespace UI.Tests
         [Test]
         public void SearchTesting()
         {
+            logger.Info("Verify search bar is visible");
             Assert.That(generalPage.IsSearchBarVisible());
+            logger.Info("Execute search request");
             generalPage.ExecuteSearchRequest(searchInGeneral);
+            logger.Info("There is a 100 seconds timer set for doing captcha manually");
             WebUtils.ExecuteCapthaManualy(100);
+            logger.Error("If captcha isn't done within 100 seconds, the test will fail", exception.ToString());
             Assert.That(searchResultPageSteps.IsSearchDoneCorrectly());
         }
 
