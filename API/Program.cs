@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace API
-{
-    internal class Program
+namespace API 
     {
-        static void Main(string[] args)
+    internal class Program 
+    {
+        static void Main(string[] args) 
         {
         }
     }

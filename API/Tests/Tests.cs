@@ -1,5 +1,4 @@
-﻿using API.APIClient;
-using API.JsonModels;
+﻿using API.JsonModels;
 using Core.Utils;
 using NUnit.Framework;
 using RestSharp;
@@ -8,9 +7,10 @@ using System.Collections.Generic;
 namespace API.Tests {
 
     [TestFixture]
-    internal class Tests {
+    internal class Tests:BaseTest {
 
         private static XML_Reader reader = new XML_Reader(@"..\..\TestData\Endpoints.xml");
+        API.APIUtils.API helper = new API.APIUtils.API();
 
         [Category("API Negative Tests")]
         [Test, TestCaseSource(nameof(ErrorModels))]
@@ -18,7 +18,6 @@ namespace API.Tests {
 
             //Arrange
             string resourseEndpoint = string.Format(reader.GetTextFromNode("//Per-SiteMethods/answers/item/key"), reader.GetTextFromNode("//Per-SiteMethods/answers/item/value"));
-            ApiClient helper = new ApiClient();
 
             //Act
             RestRequest request = helper.CreatePostRequest(resourseEndpoint);

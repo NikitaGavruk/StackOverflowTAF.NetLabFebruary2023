@@ -10,16 +10,16 @@ namespace API.Tests
     internal class BaseTest
     {
         protected static Client client;
-        protected static Logger logger;
-        protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter();
-        protected static ExtentTest testCase;
+        //protected static Logger logger;
+        //protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter();
+        //protected static ExtentTest testCase;
 
         [SetUp]
         public void Setup()
         {
-            testCase = extentReporter.CreateTest(TestContext.CurrentContext.Test.Name);
-            testCase.Model.Name = TestContext.CurrentContext.Test.Name;
-            logger = new Logger(GetType());
+            //testCase = extentReporter.CreateTest(TestContext.CurrentContext.Test.Name);
+            //testCase.Model.Name = TestContext.CurrentContext.Test.Name;
+            //logger = new Logger(GetType());
             client = Client.Instance;
         }
 
@@ -29,13 +29,14 @@ namespace API.Tests
 
             TestStatus NUnit_status = TestContext.CurrentContext.Result.Outcome.Status;
             Status extentStatus = ExtentReporter.TestStatusConvert(TestContext.CurrentContext.Result.Outcome.Status);
+            API.APIUtils.API.CloseRequest();
             Client.QuitClient();
         }
 
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            ExtentReporter.ExtentFlush(extentReporter);
+            //ExtentReporter.ExtentFlush(extentReporter);
         }
     }
 }
