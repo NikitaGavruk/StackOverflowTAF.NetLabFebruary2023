@@ -1,4 +1,5 @@
 ﻿using AutomationTeamProject.WebDriver;
+using Core.Utils;
 using NUnit.Framework;
 using SlackOverFlow;
 using System;
@@ -19,7 +20,7 @@ namespace UI.Tests
 
         GeneralPage generalPage = new GeneralPage();
         SearchResultPageSteps searchResultPageSteps = new SearchResultPageSteps();
-        private static readonly XML_Reader xmlReader = new XML_Reader(@"UI\Tests\TestData.xml");
+        private static readonly XML_Reader xmlReader = new XML_Reader(@"..\..\Tests\TestData.xml");
         private static readonly string email = xmlReader.GetTextFromNode("//Email");
         private static readonly string password = xmlReader.GetTextFromNode("//Password");
         private static readonly string tagToSearch = xmlReader.GetTextFromNode("//TagToSearch");
