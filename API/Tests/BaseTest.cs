@@ -32,12 +32,15 @@ namespace API.Tests
             Status extentStatus = ExtentReporter.TestStatusConvert(TestContext.CurrentContext.Result.Outcome.Status);
             if (NUnit_status.Equals(TestStatus.Failed)) {
                 logger.Error("Test returned an Error: ", TestContext.CurrentContext.Result.Message);
+                testCase.Log(extentStatus,
+                    "Test ended with status: " + TestContext.CurrentContext.Result.Outcome.Status.ToString() + ", Message: " + TestContext.CurrentContext.Result.Message);
             }
             else {
                 logger.Info($"Test: [{TestContext.CurrentContext.Test.Name}] Ended With Status: " + TestContext.CurrentContext.Result.Outcome.Status.ToString());
+                testCase.Log(extentStatus,
+                    "Test ended with status: " + TestContext.CurrentContext.Result.Outcome.Status.ToString());
             }
-            testCase.Log(extentStatus,
-                    "Test ended with status: " + TestContext.CurrentContext.Result.Outcome.Status.ToString()+" Message: "+ TestContext.CurrentContext.Result.Message);
+            
             API.APIUtils.API.CloseRequest();
             Client.QuitClient();
         }
