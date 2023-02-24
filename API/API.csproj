@@ -90,7 +90,6 @@
   <ItemGroup>
     <Compile Include="APIClient\ApiClient.cs" />
     <Compile Include="APIClient\IAPIHelper.cs" />
-    <Compile Include="Exceptions\AddingHeaderException.cs" />
     <Compile Include="Exceptions\CreateRequestException.cs" />
     <Compile Include="JsonModels\ClientError.cs" />
     <Compile Include="Program.cs" />
