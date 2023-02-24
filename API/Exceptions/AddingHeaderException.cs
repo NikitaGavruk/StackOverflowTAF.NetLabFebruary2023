@@ -1,10 +1,10 @@
-﻿using System;
+﻿//using System;
 
-namespace API.Exceptions {
+//namespace API.Exceptions {
 
-    public class AddingHeaderException : Exception {
-        public AddingHeaderException() : base() { }
-        public AddingHeaderException(string message) : base(message) { }
-    }
+//    public class AddingHeaderException : Exception {
+//        public AddingHeaderException() : base() { }
+//        public AddingHeaderException(string message) : base(message) { }
+//    }
 
-}
+//}
