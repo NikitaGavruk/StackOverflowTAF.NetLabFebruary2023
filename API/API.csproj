@@ -452,7 +452,7 @@
     <Compile Include="APIUtils\API.cs" />
     <Compile Include="APIUtils\Client.cs" />
     <Compile Include="Tests\BaseTest.cs" />
-    <Compile Include="JsonModels\Badge.cs" />
+    <Compile Include="JsonModels\Item.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
