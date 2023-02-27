@@ -5,6 +5,7 @@ using NUnit.Framework;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace API.Tests
 {
@@ -63,7 +64,18 @@ namespace API.Tests
             Assert.That(root.items[0], Is.EqualTo(item));
         }
 
-
+        [Category ("API Negative Tests")]
+        [Test]
+        public void GetWithWrongURI()
+        {
+            string endPoint = reader.GetTextFromNode("//Per-SiteMethods/answers/wrongURI");
+            logger.Info("Send Get request with wrong URI");
+            RestRequest request = helper.CreateGetRequest(endPoint);
+            logger.Info("Get response");
+            RestResponse response = helper.GetResponse(request);
+            logger.Info("Verify that status code is 400(Bad Request)");
+            Assert.That(response.StatusCode == HttpStatusCode.BadRequest);
+        }
     }
 
 }
