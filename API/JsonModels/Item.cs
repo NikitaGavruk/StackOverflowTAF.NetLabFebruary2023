@@ -32,6 +32,18 @@ namespace API.Units
                    link == item.link &&
                    name == item.name;
         }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 478854773;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(badge_type);
+            hashCode = hashCode * -1521134295 + award_count.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(rank);
+            hashCode = hashCode * -1521134295 + badge_id.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(link);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(name);
+            return hashCode;
+        }
     }
     public class Root
     {

@@ -49,11 +49,11 @@ namespace API.Tests
         {
 
             //Arrange
-            string resourseEndpoint = "2.3/badges";
+            string resourseEndpoint = reader.GetTextFromNode("//Per-SiteMethods/Badges/key");
 
             //Act
             RestRequest request = helper.CreateGetRequest(resourseEndpoint);
-            request.AddParameter("site", "stackoverflow",ParameterType.QueryString);
+            request.AddParameter("site", "stackoverflow", ParameterType.QueryString);
             RestResponse response = helper.GetResponse(request);
 
             //Assert
@@ -61,7 +61,7 @@ namespace API.Tests
             Item item = new Item("tag_based", 41, "bronze", 2068, "https://stackoverflow.com/badges/2068/neural-network", "neural-network");
 
             Assert.That(root.items[0], Is.EqualTo(item));
-         }
+        }
 
 
     }
