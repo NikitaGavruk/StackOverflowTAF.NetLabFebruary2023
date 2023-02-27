@@ -58,10 +58,10 @@ namespace API.Tests
 
             //Assert
             Root root = helper.DeserializeToClass<Root>(response);
+            Item item = new Item("tag_based", 41, "bronze", 2068, "https://stackoverflow.com/badges/2068/neural-network", "neural-network");
 
-           // Console.WriteLine(root.items[0].badge_id);
-           // Assert.That(root.items[1].badge_id, Is.EqualTo(2068));
-        }
+            Assert.That(root.items[0], Is.EqualTo(item));
+         }
 
 
     }
