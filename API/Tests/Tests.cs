@@ -3,6 +3,7 @@ using Core.Utils;
 using NUnit.Framework;
 using RestSharp;
 using System.Collections.Generic;
+using System.Net;
 
 namespace API.Tests {
 
@@ -36,6 +37,20 @@ namespace API.Tests {
             Assert.That(errorModel.error_message, Is.EqualTo(model.error_message));
             Assert.That(errorModel.error_name, Is.EqualTo(model.error_name));
             
+        }
+
+        [Category("API Positive Tests")]
+        [Test]
+        public void VerifyStatusCodeWithRightURI()
+        {
+            string endPoint = reader.GetTextFromNode("//Per-SiteMethods/answers/rightURI");
+            logger.Info("Send Get request with right URI");
+            RestRequest request = helper.CreateGetRequest(endPoint);
+            logger.Info("Get response");
+            RestResponse response = helper.GetResponse(request);
+            logger.Info("Verify that statuss code is 200 with message 'OK'");
+            Assert.That(response.StatusCode == HttpStatusCode.OK);
+
         }
 
     }
