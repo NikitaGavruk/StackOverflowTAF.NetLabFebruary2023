@@ -27,6 +27,7 @@ namespace SlackOverFlow
             logger.Info($"Start Test [{testCase.Model.Name}]");
             Browser = Browser.Instance;
             Browser.WindowMaximaze();
+            logger.Info("Go to General page");
             Browser.StartNavigate();
         }
 
@@ -36,7 +37,8 @@ namespace SlackOverFlow
             TestStatus NUnit_status = TestContext.CurrentContext.Result.Outcome.Status;
             Status extentStatus = ExtentReporter.TestStatusConvert(TestContext.CurrentContext.Result.Outcome.Status);
 
-            if (NUnit_status.Equals(TestStatus.Failed)) {
+            if (NUnit_status.Equals(TestStatus.Failed))
+            {
                 string ScreenshotPath = ScreenshotTaker.TakeScreenShot();
                 logger.Error("Test found error. Screenshot has been taken, ", TestContext.CurrentContext.Result.Message);
                 testCase.Log(extentStatus,
@@ -52,7 +54,8 @@ namespace SlackOverFlow
         }
 
         [OneTimeTearDown]
-        public void OneTimeTearDown() {
+        public void OneTimeTearDown()
+        {
             ExtentReporter.ExtentFlush(extentReporter);
         }
 
