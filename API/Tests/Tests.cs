@@ -49,15 +49,8 @@ namespace API.Tests {
             RestRequest request = helper.CreateGetRequest(endPoint);
             logger.Info("Get response");
             RestResponse response = helper.GetResponse(request);
-            logger.Info("Verify that statuss code is 400(Bad Request)");
+            logger.Info("Verify that status code is 400(Bad Request)");
             Assert.That(response.StatusCode == HttpStatusCode.BadRequest);
-
-        }
-
-        private static IEnumerable<TestCaseData> ErrorModels() {
-            yield return new TestCaseData(new ClientError { error_id = 403, error_message = "access_token was not created with write_access scope", error_name = "access_denied" },
-                "application/x-www-form-urlencoded", "key=jQbY46LJUbCnabOYlcGOBw((&access_token=Mc(9h6qsuI2HT3mI(TNTfA))&preview=true&filter=default&site=stackoverflow")
-                .SetName("Is Access Token ReadOnly");
         }
 
     }
