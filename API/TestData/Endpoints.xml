@@ -7,7 +7,7 @@
 				<key>2.3/answers/{0}/upvote</key>
 				<value>32393026</value>
 			</item>
-			<rightURI>/2.3/answers?order=<![CDATA[desc&sort]]>=<![CDATA[activity&site]]>=stackoverflow</rightURI>
+		
 		</answers>
 	</Per-SiteMethods>
 </Methods>

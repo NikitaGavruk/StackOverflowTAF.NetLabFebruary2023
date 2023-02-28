@@ -43,9 +43,13 @@ namespace API.Tests {
         [Test]
         public void VerifyStatusCodeWithRightURI()
         {
-            string endPoint = reader.GetTextFromNode("//Per-SiteMethods/answers/rightURI");
+            string endPoint = "2.3/answers";
             logger.Info("Send Get request with right URI");
             RestRequest request = helper.CreateGetRequest(endPoint);
+            logger.Info("Add query parameters");
+            request.AddParameter("order", "desc");
+            request.AddParameter("sort", "activity");
+            request.AddParameter("site", "stackoverflow");
             logger.Info("Get response");
             RestResponse response = helper.GetResponse(request);
             logger.Info("Verify that statuss code is 200 with message 'OK'");
