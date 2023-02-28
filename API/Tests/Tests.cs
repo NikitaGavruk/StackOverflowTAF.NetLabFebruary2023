@@ -57,6 +57,24 @@ namespace API.Tests {
             Assert.That(response.StatusCode == HttpStatusCode.BadRequest);
         }
 
+
+        [Category("API Positive Tests")]
+        [Test]
+        public void VerifyStatusCodeWithRightURI()
+        {
+            string endPoint = "2.3/answers";
+            logger.Info("Send Get request with right URI");
+            RestRequest request = helper.CreateGetRequest(endPoint);
+            logger.Info("Add query parameters");
+            request.AddParameter("order", "desc");
+            request.AddParameter("sort", "activity");
+            request.AddParameter("site", "stackoverflow");
+            logger.Info("Get response");
+            RestResponse response = helper.GetResponse(request);
+            logger.Info("Verify that statuss code is 200 with message 'OK'");
+            Assert.That(response.StatusCode == HttpStatusCode.OK);
+
+        }
     }
 
 }
