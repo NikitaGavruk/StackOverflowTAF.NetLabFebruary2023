@@ -44,9 +44,13 @@ namespace API.Tests {
         [Test]
         public void GetWithWrongURI()
         {
-            string endPoint = reader.GetTextFromNode("//Per-SiteMethods/answers/wrongURI");
-            logger.Info("Send Get request with wrong URI");
-            RestRequest request = helper.CreateGetRequest(endPoint);
+            string wrongEndPoint = "2.3answers";
+            logger.Info("Create Get request with wrong URI");
+            RestRequest request = helper.CreateGetRequest(wrongEndPoint);
+            logger.Info("Add query parameters");
+            request.AddParameter("order", "desc");
+            request.AddParameter("sort", "activity");
+            request.AddParameter("site", "stackoverflow");
             logger.Info("Get response");
             RestResponse response = helper.GetResponse(request);
             logger.Info("Verify that status code is 400(Bad Request)");
