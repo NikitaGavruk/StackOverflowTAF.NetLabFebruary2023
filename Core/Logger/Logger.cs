@@ -31,6 +31,8 @@ namespace Core.Logger {
 
         public static class ExtentReporter {
 
+            public enum Projects { UI, API, BDD }
+
             public static Status TestStatusConvert(TestStatus status) {
                 Status testStatus;
                 switch (status) {
@@ -65,7 +67,7 @@ namespace Core.Logger {
                     Logger logger = new Logger(typeof(ExtentReporter));
                     logger.Error("Old Reports Directories Were Not Deleted", exe.Message);
                 }
-
+                
                 ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(path + @"\index.html");
 
                 htmlReporter.Config.DocumentTitle = "Reports";
@@ -95,7 +97,8 @@ namespace Core.Logger {
                 return true;
             }
 
-            public static void ExtentFlush(ExtentReports reporter) {
+            public static void ExtentFlush(ExtentReports reporter, Projects projectName) {
+                Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\{projectName}\bin\debug";
                 reporter.Flush();
             }
 

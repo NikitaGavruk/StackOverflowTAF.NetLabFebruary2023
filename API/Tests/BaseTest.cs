@@ -17,6 +17,11 @@ namespace API.Tests
         protected static ExtentTest testCase;
         protected static XML_Reader reader;
 
+        [OneTimeSetUp]
+        public void OneTimeSetup() {
+            Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\..\..\..";
+        }
+
         [SetUp]
         public void Setup()
         {
@@ -26,7 +31,6 @@ namespace API.Tests
             logger.Info($"Test: [{TestContext.CurrentContext.Test.Name}] started");
             logger = new Logger(GetType());
             client = Client.Instance;
-            Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\..\..\..";
             reader = new XML_Reader($@"API\TestData\Endpoints.xml");
         }
 
@@ -53,7 +57,7 @@ namespace API.Tests
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            ExtentReporter.ExtentFlush(extentReporter);
+            ExtentReporter.ExtentFlush(extentReporter, ExtentReporter.Projects.API);
         }
 
     }

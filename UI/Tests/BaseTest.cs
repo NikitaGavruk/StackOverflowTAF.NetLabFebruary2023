@@ -56,7 +56,7 @@ namespace SlackOverFlow
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            ExtentReporter.ExtentFlush(extentReporter);
+            ExtentReporter.ExtentFlush(extentReporter, ExtentReporter.Projects.UI);
         }
 
     }
