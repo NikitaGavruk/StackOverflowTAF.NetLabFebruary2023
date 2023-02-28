@@ -19,7 +19,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 4.7.2
     - name: Restore dependencies
       run: dotnet restore
     - name: Setup Nuget
@@ -28,6 +28,5 @@ jobs:
       run: nuget restore AutomationTeamProject.sln
     - name: Build
       run: dotnet build --no-restore
-    - name: .Net Unit Test
-      uses: RachelGanonNew/Run-All-.Net-Unit-Test@v1.2.1
-
+    - name: Build and run tests
+      run: dotnet test AutomationTeamProject.sln
