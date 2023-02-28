@@ -1,8 +1,10 @@
 ﻿using API.APIUtils;
 using AventStack.ExtentReports;
 using Core.Logger;
+using Core.Utils;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
+using System;
 using static Core.Logger.Logger;
 
 namespace API.Tests
@@ -13,6 +15,7 @@ namespace API.Tests
         protected static Logger logger;
         protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter();
         protected static ExtentTest testCase;
+        protected static XML_Reader reader;
 
         [SetUp]
         public void Setup()
@@ -23,6 +26,8 @@ namespace API.Tests
             logger.Info($"Test: [{TestContext.CurrentContext.Test.Name}] started");
             logger = new Logger(GetType());
             client = Client.Instance;
+            Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\..\..\..";
+            reader = new XML_Reader($@"API\TestData\Endpoints.xml");
         }
 
         [TearDown]

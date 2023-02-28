@@ -7,11 +7,10 @@ using System.Collections.Generic;
 using System.Net;
 
 namespace API.Tests {
-
+    
     [TestFixture]
     internal class Tests:BaseTest {
-        //..\..\TestData\Endpoints.xml
-        private static XML_Reader reader = new XML_Reader($@"API\TestData\Endpoints.xml");
+        
         API.APIUtils.API helper = new API.APIUtils.API();
 
         private static IEnumerable<TestCaseData> ErrorModels() {
