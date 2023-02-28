@@ -5,7 +5,7 @@ name: EducProj
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main","EPMFARMATS-16932.Erik" ]
   pull_request:
     branches: [ "main" ]
 
@@ -28,5 +28,7 @@ jobs:
       run: nuget restore AutomationTeamProject.sln
     - name: Build
       run: dotnet build --no-restore
-    - name: Build and run tests
-      run: dotnet test AutomationTeamProject.sln
+    - name: run API Tests
+      run: packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe API\bin\Debug\API.exe
+    - name: run UI Tests
+      run: packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe UI\bin\Debug\UI.exe

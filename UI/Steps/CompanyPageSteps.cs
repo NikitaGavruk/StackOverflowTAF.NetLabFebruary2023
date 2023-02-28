@@ -1,11 +1,9 @@
 ﻿using UI.Pages;
-using Core.Utils;
 
 namespace UI.Steps {
 
-    internal class CompanyPageSteps {
+    internal class CompanyPageSteps : CompaniesPage {
 
-        private static readonly string tagToSearch = new XML_Reader("../../Tests/TestData.xml").GetTextFromNode("//TagToSearch");
         CompaniesPage companyPage = new CompaniesPage();
 
         public bool IsFilterAppliedCorrectly(out int count) {

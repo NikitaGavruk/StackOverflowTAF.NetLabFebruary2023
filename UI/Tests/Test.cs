@@ -1,12 +1,7 @@
 ﻿using AutomationTeamProject.WebDriver;
-using Core.Utils;
 using NUnit.Framework;
 using SlackOverFlow;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UI.Entities;
 using UI.Pages;
 using UI.Steps;
@@ -20,7 +15,6 @@ namespace UI.Tests
 
         GeneralPage generalPage = new GeneralPage();
         SearchResultPageSteps searchResultPageSteps = new SearchResultPageSteps();
-        private static readonly XML_Reader xmlReader = new XML_Reader(@"..\..\Tests\TestData.xml");
         private static readonly string email = xmlReader.GetTextFromNode("//Email");
         private static readonly string password = xmlReader.GetTextFromNode("//Password");
         private static readonly string tagToSearch = xmlReader.GetTextFromNode("//TagToSearch");

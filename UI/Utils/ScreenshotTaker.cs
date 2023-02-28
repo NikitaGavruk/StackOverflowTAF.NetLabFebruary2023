@@ -41,7 +41,13 @@ namespace UI.Utils {
             }
         }
 
-        public static string TakeScreenShot(string saveDirectory = @"Screenshots") {
+        public static string TakeScreenShot() {
+            string saveDirectory;
+            if (Environment.CurrentDirectory.EndsWith(@"bin\Debug"))
+                saveDirectory = @"Screenshots";
+            else
+                saveDirectory = @"UI\bin\Dubug\Screenshots";
+
             if (!Directory.Exists(saveDirectory))
                 Directory.CreateDirectory(saveDirectory);
             else {

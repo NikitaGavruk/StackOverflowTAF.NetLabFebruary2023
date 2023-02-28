@@ -1,17 +1,14 @@
 ﻿using API.JsonModels;
-using Core.Utils;
 using NUnit.Framework;
 using RestSharp;
-using System;
 using System.Collections.Generic;
 using System.Net;
 
 namespace API.Tests {
-
+    
     [TestFixture]
     internal class Tests:BaseTest {
-
-        private static XML_Reader reader = new XML_Reader(@"..\..\TestData\Endpoints.xml");
+        
         API.APIUtils.API helper = new API.APIUtils.API();
 
         private static IEnumerable<TestCaseData> ErrorModels() {
@@ -28,16 +25,21 @@ namespace API.Tests {
             string resourseEndpoint = string.Format(reader.GetTextFromNode("//Per-SiteMethods/answers/item/key"), reader.GetTextFromNode("//Per-SiteMethods/answers/item/value"));
 
             //Act
+            logger.Info($"Create POST request taking the endpoint: {resourseEndpoint}");
             RestRequest request = helper.CreatePostRequest(resourseEndpoint);
+            logger.Info($"Add Request Body");
             request.AddParameter(key, value, ParameterType.RequestBody);
+            logger.Info($"Send The Request and get the Response");
             RestResponse response = helper.GetResponse(request);
 
             //Assert
+            logger.Info($"Deserialize the response to type ({typeof(ClientError)})");
             ClientError model = helper.DeserializeToClass<ClientError>(response);
+            logger.Info($"Assert That the sent properties are equal to the received ones");
             Assert.That(errorModel.error_id, Is.EqualTo(model.error_id));
             Assert.That(errorModel.error_message, Is.EqualTo(model.error_message));
             Assert.That(errorModel.error_name, Is.EqualTo(model.error_name));
-            
+
         }
 
         [Category ("API Negative Tests")]
