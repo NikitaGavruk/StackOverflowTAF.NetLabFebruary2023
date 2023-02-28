@@ -10,8 +10,8 @@ namespace API.Tests {
 
     [TestFixture]
     internal class Tests:BaseTest {
-
-        private static XML_Reader reader = new XML_Reader($@"{Environment.CurrentDirectory}\..\..\TestData\Endpoints.xml");
+        //..\..\TestData\Endpoints.xml
+        private static XML_Reader reader = new XML_Reader($@"..\..\..\..\.Net-Lab\API\TestData\Endpoints.xml");
         API.APIUtils.API helper = new API.APIUtils.API();
 
         private static IEnumerable<TestCaseData> ErrorModels() {
