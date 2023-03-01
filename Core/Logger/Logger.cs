@@ -70,7 +70,7 @@ namespace Core.Logger {
                     Directory.CreateDirectory(path);
 
                 try {
-                    DeleteReports(6);
+                    DeleteReports(6, projectName);
                 }
                 catch (Exception exe) {
                     Logger logger = new Logger(typeof(ExtentReporter));
@@ -92,11 +92,18 @@ namespace Core.Logger {
                 return extentReporter;
             }
 
-            public static bool DeleteReports(int deleteFactor) {
+            public static bool DeleteReports(int deleteFactor, Projects projectName) {
                 if (deleteFactor < 1)
                     throw new ArgumentException("The Count of Folders to Delete Has to Be at Least One");
 
-                string[] reportDirectories = Directory.GetDirectories($@"{Environment.CurrentDirectory}\Reports");
+                string[] reportDirectories;
+                if (Environment.CurrentDirectory.EndsWith(@"bin\Debug")) {
+                    reportDirectories = Directory.GetDirectories($@"{Environment.CurrentDirectory}\Reports");
+                }
+                else {
+                    reportDirectories = Directory.GetDirectories($@"{projectName}\bin\Debug\Reports");
+                }
+
                 try {
                     if (reportDirectories.Length >= deleteFactor) {
                         foreach (var item in reportDirectories) {

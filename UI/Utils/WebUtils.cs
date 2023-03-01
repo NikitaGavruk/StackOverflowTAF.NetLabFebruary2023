@@ -33,7 +33,7 @@ namespace UI.Utils {
                 return @".\..\..\..\UI\Tests\TestData.xml";
             }
             else
-                return @"Tests\TestData.xml";
+                return @"UI\Tests\TestData.xml";
         }
 
     }
