@@ -5,6 +5,7 @@ using Core.Utils;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using static Core.Logger.Logger;
+using static Core.Logger.Logger.ExtentReporter;
 
 namespace API.Tests
 {
@@ -12,23 +13,13 @@ namespace API.Tests
     {
         protected static Client client;
         protected static Logger logger;
-        protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter();
+        protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter(Projects.API);
         protected static ExtentTest testCase;
         protected static XML_Reader reader;
-
-        //[OneTimeSetUp]
-        //public void OneTimeSetup() {
-        //    Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\..\..\..";
-        //}
 
         [SetUp]
         public void Setup()
         {
-            //string[] ddirs = Directory.GetDirectories($@"{Environment.CurrentDirectory}\..\..\..", "API", SearchOption.AllDirectories);
-            //string[] dirs = Directory.GetFiles($@"{Environment.CurrentDirectory}\..\..\..", "Endpoints.xml",SearchOption.AllDirectories);
-            //Console.WriteLine(Environment.CurrentDirectory);
-            //Environment.CurrentDirectory = $@".\..\..\..";
-            //Console.WriteLine(Environment.CurrentDirectory);
             testCase = extentReporter.CreateTest(TestContext.CurrentContext.Test.Name);
             testCase.Model.Name = TestContext.CurrentContext.Test.Name;
             logger = new Logger(GetType());
@@ -60,16 +51,12 @@ namespace API.Tests
             
             API.APIUtils.API.CloseRequest();
             Client.QuitClient();
-            //Console.WriteLine(Environment.CurrentDirectory);
-            //Environment.CurrentDirectory = $@"API\bin\debug";
-            //Console.WriteLine(Environment.CurrentDirectory);
         }
 
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            //Environment.CurrentDirectory = $@".\..\..\..";
-            ExtentReporter.ExtentFlush(extentReporter, ExtentReporter.Projects.API);
+            ExtentReporter.ExtentFlush(extentReporter);
         }
 
     }

@@ -55,11 +55,20 @@ namespace Core.Logger {
                 return testStatus;
             }
 
-            public static ExtentReports ConfigureExtentReporter() {
-                string path = String.Format(@"Reports" + @"\{0}_TestRun",
+            public static ExtentReports ConfigureExtentReporter(Projects projectName) {
+                string path=null;
+                if (Environment.CurrentDirectory.EndsWith(@"bin\Debug")) {
+                    path = String.Format(@"Reports" + @"\{0}_TestRun",
                     DateTime.UtcNow.ToString("dd-MM-yyyTHH-mm-ss"));
+                }
+                else {
+                    path = String.Format($@"{projectName}\bin\Debug\Reports" + @"\{0}_TestRun",
+                    DateTime.UtcNow.ToString("dd-MM-yyyTHH-mm-ss"));
+                }
+
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
+
                 try {
                     DeleteReports(6);
                 }
@@ -67,8 +76,14 @@ namespace Core.Logger {
                     Logger logger = new Logger(typeof(ExtentReporter));
                     logger.Error("Old Reports Directories Were Not Deleted", exe.Message);
                 }
-                Console.WriteLine(Environment.CurrentDirectory);
-                ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(path + @"\index.html");
+
+                ExtentHtmlReporter htmlReporter=null;
+                if (Environment.CurrentDirectory.EndsWith(@"bin\Debug")) {
+                    htmlReporter = new ExtentHtmlReporter(path + @"\index.html");
+                }
+                else {
+                    htmlReporter = new ExtentHtmlReporter($@"{projectName}\bin\debug\"+path + @"\index.html");
+                }
 
                 htmlReporter.Config.DocumentTitle = "Reports";
                 htmlReporter.Config.ReportName = "Reporting For StackOverFlow Tests";
@@ -97,7 +112,7 @@ namespace Core.Logger {
                 return true;
             }
 
-            public static void ExtentFlush(ExtentReports reporter, Projects projectName) {
+            public static void ExtentFlush(ExtentReports reporter) {
                 //Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\{projectName}\bin\debug";
                 reporter.Flush();
             }

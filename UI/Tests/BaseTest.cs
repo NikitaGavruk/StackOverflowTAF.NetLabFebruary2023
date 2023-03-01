@@ -8,6 +8,7 @@ using NUnit.Framework.Interfaces;
 using AventStack.ExtentReports;
 using System;
 using UI.Utils;
+using static Core.Logger.Logger.ExtentReporter;
 
 namespace SlackOverFlow
 {
@@ -15,7 +16,7 @@ namespace SlackOverFlow
 
         protected static Browser Browser;
         protected static Logger logger;
-        protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter();
+        protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter(Projects.UI);
         protected static ExtentTest testCase;
 
         [SetUp]
@@ -56,7 +57,7 @@ namespace SlackOverFlow
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            ExtentReporter.ExtentFlush(extentReporter, ExtentReporter.Projects.UI);
+            ExtentReporter.ExtentFlush(extentReporter);
         }
 
     }
