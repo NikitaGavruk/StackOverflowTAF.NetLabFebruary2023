@@ -67,7 +67,7 @@ namespace Core.Logger {
                     Logger logger = new Logger(typeof(ExtentReporter));
                     logger.Error("Old Reports Directories Were Not Deleted", exe.Message);
                 }
-                
+                Console.WriteLine(Environment.CurrentDirectory);
                 ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(path + @"\index.html");
 
                 htmlReporter.Config.DocumentTitle = "Reports";
@@ -98,7 +98,7 @@ namespace Core.Logger {
             }
 
             public static void ExtentFlush(ExtentReports reporter, Projects projectName) {
-                Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\{projectName}\bin\debug";
+                //Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\{projectName}\bin\debug";
                 reporter.Flush();
             }
 
