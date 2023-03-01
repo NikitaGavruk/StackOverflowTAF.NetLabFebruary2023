@@ -6,7 +6,9 @@
 			<item>
 				<key>2.3/answers/{0}/upvote</key>
 				<value>32393026</value>
-			</item>			
+				<wrongURI>2.3answers</wrongURI>
+				<rightURI>2.3/answers</rightURI>
+			</item>
 		</answers>
 	</Per-SiteMethods>
 </Methods>
