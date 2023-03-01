@@ -1,14 +1,13 @@
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.DevTools;
 using AutomationTeamProject.WebDriver;
 using static Core.Logger.Logger;
+using static Core.Logger.Logger.ExtentReporter;
 using Core.Logger;
 using NUnit.Framework.Interfaces;
 using AventStack.ExtentReports;
 using System;
 using UI.Utils;
-using static Core.Logger.Logger.ExtentReporter;
+using Core.Utils;
 
 namespace SlackOverFlow
 {
@@ -16,8 +15,10 @@ namespace SlackOverFlow
 
         protected static Browser Browser;
         protected static Logger logger;
-        protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter(Projects.UI);
         protected static ExtentTest testCase;
+        protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter(Projects.UI);
+        protected static XML_Reader xmlReader = new XML_Reader(WebUtils.PathToTestData());
+
 
         [SetUp]
         public void Setup()
@@ -42,9 +43,16 @@ namespace SlackOverFlow
             {
                 string ScreenshotPath = ScreenshotTaker.TakeScreenShot();
                 logger.Error("Test found error. Screenshot has been taken, ", TestContext.CurrentContext.Result.Message);
-                testCase.Log(extentStatus,
+
+                if (Environment.CurrentDirectory.EndsWith(@"bin\Debug")) {
+                    testCase.Log(extentStatus,
                     $"[{testCase.Model.Name}] Test ended with status " + TestContext.CurrentContext.Result.Outcome.Status.ToString()
-                    + testCase.AddScreenCaptureFromPath(Environment.CurrentDirectory+@"\"+ScreenshotPath));
+                    + testCase.AddScreenCaptureFromPath(Environment.CurrentDirectory + @"\" + ScreenshotPath));
+                }
+                else
+                    testCase.Log(extentStatus,
+                    $"[{testCase.Model.Name}] Test ended with status " + TestContext.CurrentContext.Result.Outcome.Status.ToString()
+                    + testCase.AddScreenCaptureFromPath($@"{Environment.CurrentDirectory}\UI\bin\Debug\" + ScreenshotPath));
             }
             else {
                 logger.Info($"[{testCase.Model.Name}] Test ended with Status: " + TestContext.CurrentContext.Result.Outcome.Status.ToString());

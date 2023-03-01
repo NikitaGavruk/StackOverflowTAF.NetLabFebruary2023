@@ -27,6 +27,15 @@ namespace UI.Utils {
             }
 
         }
+
+        public static string PathToTestData() {
+            if (Environment.CurrentDirectory.EndsWith(@"bin\Debug")) {
+                return @".\..\..\..\UI\Tests\TestData.xml";
+            }
+            else
+                return @"Tests\TestData.xml";
+        }
+
     }
 
 }

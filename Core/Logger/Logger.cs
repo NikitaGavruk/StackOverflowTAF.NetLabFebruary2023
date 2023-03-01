@@ -56,7 +56,7 @@ namespace Core.Logger {
             }
 
             public static ExtentReports ConfigureExtentReporter(Projects projectName) {
-                string path=null;
+                string path;
                 if (Environment.CurrentDirectory.EndsWith(@"bin\Debug")) {
                     path = String.Format(@"Reports" + @"\{0}_TestRun",
                     DateTime.UtcNow.ToString("dd-MM-yyyTHH-mm-ss"));
@@ -113,7 +113,6 @@ namespace Core.Logger {
             }
 
             public static void ExtentFlush(ExtentReports reporter) {
-                //Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\{projectName}\bin\debug";
                 reporter.Flush();
             }
 
