@@ -17,14 +17,15 @@ namespace API.Tests
         protected static ExtentTest testCase;
         protected static XML_Reader reader;
 
-        [OneTimeSetUp]
-        public void OneTimeSetup() {
-            Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\..\..\..";
-        }
+        //[OneTimeSetUp]
+        //public void OneTimeSetup() {
+        //    Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\..\..\..";
+        //}
 
         [SetUp]
         public void Setup()
         {
+            Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\..\..\..";
             testCase = extentReporter.CreateTest(TestContext.CurrentContext.Test.Name);
             testCase.Model.Name = TestContext.CurrentContext.Test.Name;
             logger = new Logger(GetType());
@@ -52,6 +53,7 @@ namespace API.Tests
             
             API.APIUtils.API.CloseRequest();
             Client.QuitClient();
+            Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\API\bin\debug";
         }
 
         [OneTimeTearDown]
