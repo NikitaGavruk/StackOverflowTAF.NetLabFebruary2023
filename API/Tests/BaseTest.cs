@@ -26,7 +26,8 @@ namespace API.Tests
         [SetUp]
         public void Setup()
         {
-            string[] dirs = Directory.GetFiles($@"{Environment.CurrentDirectory}\..\..\..", "Endpoints.xml",SearchOption.AllDirectories);
+            string[] ddirs = Directory.GetDirectories($@"{Environment.CurrentDirectory}\..\..\..", "API", SearchOption.AllDirectories);
+            //string[] dirs = Directory.GetFiles($@"{Environment.CurrentDirectory}\..\..\..", "Endpoints.xml",SearchOption.AllDirectories);
             //Console.WriteLine(Environment.CurrentDirectory);
             //Environment.CurrentDirectory = $@".\..\..\..";
             //Console.WriteLine(Environment.CurrentDirectory);
@@ -35,7 +36,7 @@ namespace API.Tests
             logger = new Logger(GetType());
             logger.Info($"Test: [{TestContext.CurrentContext.Test.Name}] started");
             client = Client.Instance;
-            reader = new XML_Reader(dirs[0]);
+            reader = new XML_Reader(ddirs[0]+"/TestData/Endpoints.xml");
         }
 
         [TearDown]
