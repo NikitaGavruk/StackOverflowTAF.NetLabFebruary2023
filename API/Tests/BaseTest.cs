@@ -5,6 +5,7 @@ using Core.Utils;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using System;
+using System.IO;
 using static Core.Logger.Logger;
 
 namespace API.Tests
@@ -25,15 +26,16 @@ namespace API.Tests
         [SetUp]
         public void Setup()
         {
-            Console.WriteLine(Environment.CurrentDirectory);
-            Environment.CurrentDirectory = $@".\..\..\..";
-            Console.WriteLine(Environment.CurrentDirectory);
+            string[] dirs = Directory.GetFiles($@"{Environment.CurrentDirectory}\..\..\..", "Endpoints.xml",SearchOption.AllDirectories);
+            //Console.WriteLine(Environment.CurrentDirectory);
+            //Environment.CurrentDirectory = $@".\..\..\..";
+            //Console.WriteLine(Environment.CurrentDirectory);
             testCase = extentReporter.CreateTest(TestContext.CurrentContext.Test.Name);
             testCase.Model.Name = TestContext.CurrentContext.Test.Name;
             logger = new Logger(GetType());
             logger.Info($"Test: [{TestContext.CurrentContext.Test.Name}] started");
             client = Client.Instance;
-            reader = new XML_Reader($@"API\TestData\Endpoints.xml");
+            reader = new XML_Reader(dirs[0]);
         }
 
         [TearDown]
@@ -54,14 +56,15 @@ namespace API.Tests
             
             API.APIUtils.API.CloseRequest();
             Client.QuitClient();
-            Console.WriteLine(Environment.CurrentDirectory);
-            Environment.CurrentDirectory = $@"API\bin\debug";
-            Console.WriteLine(Environment.CurrentDirectory);
+            //Console.WriteLine(Environment.CurrentDirectory);
+            //Environment.CurrentDirectory = $@"API\bin\debug";
+            //Console.WriteLine(Environment.CurrentDirectory);
         }
 
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
+            //Environment.CurrentDirectory = $@".\..\..\..";
             ExtentReporter.ExtentFlush(extentReporter, ExtentReporter.Projects.API);
         }
 
