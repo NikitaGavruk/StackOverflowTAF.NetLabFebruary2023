@@ -25,12 +25,13 @@ namespace API.Tests
         [SetUp]
         public void Setup()
         {
-            Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\..\..\..";
+            Console.WriteLine(Environment.CurrentDirectory);
+            Environment.CurrentDirectory = $@".\..\..\..";
+            Console.WriteLine(Environment.CurrentDirectory);
             testCase = extentReporter.CreateTest(TestContext.CurrentContext.Test.Name);
             testCase.Model.Name = TestContext.CurrentContext.Test.Name;
             logger = new Logger(GetType());
             logger.Info($"Test: [{TestContext.CurrentContext.Test.Name}] started");
-            logger = new Logger(GetType());
             client = Client.Instance;
             reader = new XML_Reader($@"API\TestData\Endpoints.xml");
         }
@@ -53,7 +54,9 @@ namespace API.Tests
             
             API.APIUtils.API.CloseRequest();
             Client.QuitClient();
-            Environment.CurrentDirectory = $@"{Environment.CurrentDirectory}\API\bin\debug";
+            Console.WriteLine(Environment.CurrentDirectory);
+            Environment.CurrentDirectory = $@"API\bin\debug";
+            Console.WriteLine(Environment.CurrentDirectory);
         }
 
         [OneTimeTearDown]

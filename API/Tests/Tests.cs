@@ -22,7 +22,7 @@ namespace API.Tests {
         [Category("API Negative Tests")]
         [Test, TestCaseSource(nameof(ErrorModels))]
         public void AnswerUpvote(ClientError errorModel, string key, string value) {
-
+            Console.WriteLine(Environment.CurrentDirectory);
             //Arrange
             string resourseEndpoint = string.Format(reader.GetTextFromNode("//Per-SiteMethods/answers/item/key"), reader.GetTextFromNode("//Per-SiteMethods/answers/item/value"));
 
@@ -36,13 +36,14 @@ namespace API.Tests {
             Assert.That(errorModel.error_id, Is.EqualTo(model.error_id));
             Assert.That(errorModel.error_message, Is.EqualTo(model.error_message));
             Assert.That(errorModel.error_name, Is.EqualTo(model.error_name));
-            
+            Console.WriteLine(Environment.CurrentDirectory);
         }
 
         [Category ("API Negative Tests")]
         [Test]
         public void GetWithWrongURI()
         {
+            Console.WriteLine(Environment.CurrentDirectory);
             string wrongEndPoint = "2.3answers";
             logger.Info("Create Get request with wrong URI");
             RestRequest request = helper.CreateGetRequest(wrongEndPoint);
@@ -54,6 +55,7 @@ namespace API.Tests {
             RestResponse response = helper.GetResponse(request);
             logger.Info("Verify that status code is 400(Bad Request)");
             Assert.That(response.StatusCode == HttpStatusCode.BadRequest);
+            Console.WriteLine(Environment.CurrentDirectory);
         }
 
     }
