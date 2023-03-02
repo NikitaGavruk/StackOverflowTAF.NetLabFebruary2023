@@ -74,7 +74,7 @@ namespace API.Tests
         [Test]
         public void GetWithWrongURI()
         {
-            string wrongEndPoint = "2.3answers";
+            string wrongEndPoint = reader.GetTextFromNode("//Per-SiteMethods/answers/item/wrongURI");
             logger.Info("Create Get request with wrong URI");
             RestRequest request = helper.CreateGetRequest(wrongEndPoint);
             logger.Info("Add query parameters");
@@ -85,6 +85,25 @@ namespace API.Tests
             RestResponse response = helper.GetResponse(request);
             logger.Info("Verify that status code is 400(Bad Request)");
             Assert.That(response.StatusCode == HttpStatusCode.BadRequest);
+        }
+
+
+        [Category("API Positive Tests")]
+        [Test]
+        public void VerifyStatusCodeWithRightURI()
+        {
+            string endPoint = reader.GetTextFromNode("//Per-SiteMethods/answers/item/rightURI");
+            logger.Info("Send Get request with right URI");
+            RestRequest request = helper.CreateGetRequest(endPoint);
+            logger.Info("Add query parameters");
+            request.AddParameter("order", "desc");
+            request.AddParameter("sort", "activity");
+            request.AddParameter("site", "stackoverflow");
+            logger.Info("Get response");
+            RestResponse response = helper.GetResponse(request);
+            logger.Info("Verify that statuss code is 200 with message 'OK'");
+            Assert.That(response.StatusCode == HttpStatusCode.OK);
+
         }
     }
 
