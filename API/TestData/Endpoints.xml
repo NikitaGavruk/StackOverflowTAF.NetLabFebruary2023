@@ -6,8 +6,7 @@
 			<item>
 				<key>2.3/answers/{0}/upvote</key>
 				<value>32393026</value>
-			</item>		
-			<wrongURI>/2.3answers?order=<![CDATA[desc&sort]]>=<![CDATA[activity&site]]>=stackoverflow</wrongURI>	
+			</item>			
 		</answers>
 			<Badges>
 				<key>2.3/badges</key>
