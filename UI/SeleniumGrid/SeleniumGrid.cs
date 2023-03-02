@@ -1,25 +1,28 @@
 ﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Remote;
 
-namespace SeleniumGridExample
+namespace SeleniumGrid
 {
-    class Program
+    class SeleniumGrid
     {
         static void Main(string[] args)
         {
-            var options = new ChromeOptions();
-            options.AddAdditionalCapability(CapabilityType.BrowserName, "chrome");
+            Uri gridHubUrl = new Uri("http://localhost:4444/wd/hub");
 
-            var driver = new ChromeDriver(options);
+            ChromeOptions chromeOptions = new ChromeOptions();
+            RemoteWebDriver chromeDriver = new RemoteWebDriver(gridHubUrl, chromeOptions.ToCapabilities());
 
-            driver.Navigate().GoToUrl("https://www.google.com/");
-            var searchBox = driver.FindElement(By.Name("q"));
-            searchBox.SendKeys("Selenium Grid example");
-            searchBox.Submit();
+            FirefoxOptions firefoxOptions = new FirefoxOptions();
+            RemoteWebDriver firefoxDriver = new RemoteWebDriver(gridHubUrl, firefoxOptions.ToCapabilities());
 
-            driver.Quit();
+            chromeDriver.Navigate().GoToUrl("https://www.google.com");
+            firefoxDriver.Navigate().GoToUrl("https://www.google.com");
+
+            chromeDriver.Quit();
+            firefoxDriver.Quit();
         }
     }
 }
-
