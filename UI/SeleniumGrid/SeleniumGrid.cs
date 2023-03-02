@@ -8,7 +8,7 @@ namespace SeleniumGrid
 {
     class SeleniumGrid
     {
-        static void Main(string[] args)
+        public static void Grid()
         {
             Uri gridHubUrl = new Uri("http://localhost:4444/wd/hub");
 
