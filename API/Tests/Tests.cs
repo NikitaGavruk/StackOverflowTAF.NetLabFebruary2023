@@ -50,17 +50,23 @@ namespace API.Tests
         {
 
             //Arrange
+            logger.Info("get the URI from XML file");
             string resourseEndpoint = reader.GetTextFromNode("//Per-SiteMethods/Badges/key");
 
             //Act
+            logger.Info("make the get request with" +resourseEndpoint);
             RestRequest request = helper.CreateGetRequest(resourseEndpoint);
+            logger.Info("add the parameter of site with the value of stackoverflow to Header");
             request.AddParameter("site", "stackoverflow", ParameterType.QueryString);
+            logger.Info("execute the request to get response");
             RestResponse response = helper.GetResponse(request);
 
             //Assert
+            logger.Info("convert response body to object of model");
             Root root = helper.DeserializeToClass<Root>(response);
+            logger.Info("make ecpected object of model");
             Item item = new Item("tag_based", 41, "bronze", 2068, "https://stackoverflow.com/badges/2068/neural-network", "neural-network");
-
+            logger.Info("checked if the response object is the same as expected object or not");
             Assert.That(root.items[0], Is.EqualTo(item));
         }
 
