@@ -10,5 +10,8 @@
 				<rightURI>2.3/answers</rightURI>
 			</item>
 		</answers>
+			<Badges>
+				<key>2.3/badges</key>
+			</Badges>
 	</Per-SiteMethods>
 </Methods>
