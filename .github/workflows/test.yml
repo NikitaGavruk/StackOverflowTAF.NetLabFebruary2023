@@ -29,5 +29,5 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: run API and UI Tests
-      run: packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe API\bin\Debug\API.exe
-      run: packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe UI\bin\Debug\UI.exe
+    - run: packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe API\bin\Debug\API.exe
+    - run: packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe UI\bin\Debug\UI.exe
