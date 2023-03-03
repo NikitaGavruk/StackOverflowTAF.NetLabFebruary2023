@@ -1,12 +1,14 @@
 ﻿using AutomationTeamProject.WebDriver;
 using Core.Utils;
 using NUnit.Framework;
+using RazorEngine.Compilation.ImpromptuInterface.InvokeExt;
 using SlackOverFlow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using UI.Entities;
 using UI.Pages;
 using UI.Steps;
@@ -15,7 +17,7 @@ using UI.Utils;
 namespace UI.Tests
 {
     [TestFixture]
-    internal class Test:BaseTest
+    internal class Test : BaseTest
     {
 
         GeneralPage generalPage = new GeneralPage();
@@ -24,12 +26,13 @@ namespace UI.Tests
         private static readonly string email = xmlReader.GetTextFromNode("//Email");
         private static readonly string password = xmlReader.GetTextFromNode("//Password");
         private static readonly string tagToSearch = xmlReader.GetTextFromNode("//TagToSearch");
-        private static readonly string searchInGeneral = xmlReader.GetTextFromNode("//SearchInGeneral");
+        private static readonly List<string> SearchData = xmlReader.GetTextListFromNodes("//SearchInGeneral");
+        //private static readonly string searchInGeneral = xmlReader.GetTextFromNode("//SearchInGeneral");
         User user = new User(email, password);
         CompaniesPage companiesPage;
         CompanyPageSteps companiesPageSteps;
         GenericSearchedCompanyPage genericSearchedPage;
-        TimeoutException exception = new TimeoutException();   
+        TimeoutException exception = new TimeoutException();
 
         [Test]
         public void VideoFieldIsDisplayed()
@@ -42,13 +45,14 @@ namespace UI.Tests
             Assert.IsTrue(forTeamsPageVideo.IsVideoSuccesfulyOpen(), "Video did not open");
         }
 
-        [Test]
-        public void SearchTesting()
+        [TestCaseSource(nameof(SearchData))]
+        public void SearchTesting(string data)
         {
+            
             logger.Info("Verify search bar is visible");
             Assert.That(generalPage.IsSearchBarVisible());
             logger.Info("Execute search request");
-            generalPage.ExecuteSearchRequest(searchInGeneral);
+            generalPage.ExecuteSearchRequest(data);
             logger.Info("There is a 100 seconds timer set for doing captcha manually");
             WebUtils.ExecuteCapthaManualy(100);
             logger.Error("If captcha isn't done within 100 seconds, the test will fail", exception.ToString());
@@ -56,7 +60,8 @@ namespace UI.Tests
         }
 
         [Test]
-        public void TagExists() {
+        public void TagExists()
+        {
 
             logger.Info("Log into The system");
             generalPage = new LoginPageSteps().Login(user);
@@ -110,7 +115,7 @@ namespace UI.Tests
             Browser.NavigateTo("https://stackoverflow.co/");
             logger.Info("navigate to career page");
             var CareersPage = generalPage.GoToCareerPages();
-            logger.Info("find the\"Who we are section\"" );
+            logger.Info("find the\"Who we are section\"");
             Assert.That(CareersPage.WhoWeAreIsVisiblse, Is.True, "the element 'Who we Are' is not visible ");
         }
 
