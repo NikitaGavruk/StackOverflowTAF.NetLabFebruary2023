@@ -1,4 +1,4 @@
-﻿using API.JsonModels;
+using API.JsonModels;
 using API.Units;
 using Core.Utils;
 using NUnit.Framework;
