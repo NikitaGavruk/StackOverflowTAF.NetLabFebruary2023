@@ -28,21 +28,6 @@ jobs:
       run: nuget restore AutomationTeamProject.sln
     - name: Build
       run: dotnet build --no-restore
-
-  Run_API_Tests:
-
-    runs-on: windows-latest
-
-    needs: [ build ]
-    steps:
-    - name: run API Tests
+    - name: run API and UI Tests
       run: packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe API\bin\Debug\API.exe
-
-  Run_UI_Tests:
-
-    runs-on: windows-latest
-
-    needs: [ build ]
-    steps:
-    - name: run UI Tests
       run: packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe UI\bin\Debug\UI.exe
