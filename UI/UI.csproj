@@ -481,8 +481,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-    <None Include="WebDriver\gridhub.config" />
-    <None Include="WebDriver\gridnode.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Tests\TestData.xml" />
