@@ -1,5 +1,4 @@
-﻿using AutomationTeamProject.WebDriver;
-using Core.Utils;
+using AutomationTeamProject.WebDriver;
 using NUnit.Framework;
 using RazorEngine.Compilation.ImpromptuInterface.InvokeExt;
 using SlackOverFlow;
@@ -22,7 +21,6 @@ namespace UI.Tests
 
         GeneralPage generalPage = new GeneralPage();
         SearchResultPageSteps searchResultPageSteps = new SearchResultPageSteps();
-        private static readonly XML_Reader xmlReader = new XML_Reader(@"..\..\Tests\TestData.xml");
         private static readonly string email = xmlReader.GetTextFromNode("//Email");
         private static readonly string password = xmlReader.GetTextFromNode("//Password");
         private static readonly string tagToSearch = xmlReader.GetTextFromNode("//TagToSearch");
