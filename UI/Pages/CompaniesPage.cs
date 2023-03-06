@@ -7,7 +7,7 @@ using UI.Utils;
 
 namespace UI.Pages {
 
-    internal class CompaniesPage {
+    internal class CompaniesPage:AbstractPage {
 
         private static readonly By firstCompanyLogoInCompanyList = By.XPath("//div[@class='company-list']/descendant::img[1]");
         private static readonly By filterByTagButton = By.XPath("//button[@id='filter-button-tech']");
@@ -20,8 +20,8 @@ namespace UI.Pages {
         private static readonly string filtersUnderSearchBox = "//button[contains(text(),'Clear filters')]//preceding-sibling::span[contains(text(),'{0}')]";
         private static readonly string fixedSuggestion = "//span[@class='s-tag rendered-element' and text()='{0}']";
         private static readonly string searchedCompanyGenericCompanyName = "//div[@class='company-list']/div[{0}]//descendant::h2/a";
-        private static readonly string tagToSearch = new XML_Reader(@"..\..\Tests\TestData.xml").GetTextFromNode("//TagToSearch");
-        
+        protected static readonly string tagToSearch = new XML_Reader(WebUtils.PathToTestData()).GetTextFromNode("//TagToSearch");
+
         public bool IsPageLoaded() =>
             WebDriverExtension.IsElementClickable(firstCompanyLogoInCompanyList, 5);
 
