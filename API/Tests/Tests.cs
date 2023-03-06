@@ -57,6 +57,7 @@ namespace API.Tests
             logger.Info("make the get request with" +resourseEndpoint);
             RestRequest request = helper.CreateGetRequest(resourseEndpoint);
             logger.Info("add the parameter of site with the value of stackoverflow to Header");
+            request.AddUrlSegment("id", 2068);
             request.AddParameter("site", "stackoverflow", ParameterType.QueryString);
             logger.Info("execute the request to get response");
             RestResponse response = helper.GetResponse(request);
