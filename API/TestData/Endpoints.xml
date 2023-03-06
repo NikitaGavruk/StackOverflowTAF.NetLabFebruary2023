@@ -11,7 +11,7 @@
 			</item>
 		</answers>
 			<Badges>
-				<key>2.3/badges</key>
+				<key>2.3/badges/{id}</key>
 			</Badges>
 	</Per-SiteMethods>
 </Methods>
