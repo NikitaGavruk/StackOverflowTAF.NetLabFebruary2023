@@ -14,7 +14,7 @@ namespace AutomationTeamProject.WebDriver
             Chrome,
             Firefox,
             RemoteChrome,
-            RemteFireFox
+            RemoteFireFox
         }
 
         public static IWebDriver GetDriver(BrowserType browser)
@@ -38,14 +38,12 @@ namespace AutomationTeamProject.WebDriver
                     {
                         ChromeOptions chromeOptions = new ChromeOptions();
                         RemoteWebDriver chromeDriver = new RemoteWebDriver(gridHubUrl, chromeOptions.ToCapabilities(), TimeSpan.FromSeconds(500));
-                        chromeDriver.Navigate().GoToUrl("https://www.google.com");
                         break;
                     }
-                case BrowserType.RemteFireFox:
+                case BrowserType.RemoteFireFox:
                     {
                         FirefoxOptions firefoxOptions = new FirefoxOptions();
                         RemoteWebDriver firefoxDriver = new RemoteWebDriver(gridHubUrl, firefoxOptions.ToCapabilities(), TimeSpan.FromSeconds(500));
-                        firefoxDriver.Navigate().GoToUrl("https://www.google.com");
                         break;
                     }
             }
