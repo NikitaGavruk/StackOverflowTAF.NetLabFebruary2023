@@ -18,6 +18,7 @@ namespace UI.Pages
         private static readonly By overFlowBlogFirstItem = By.XPath("(//div[contains(@Class,'ow-break-word')])[1]");
         private static readonly By companiesButton = By.XPath("//div[contains(text(),'Companies')]");
         private static readonly By careerButtonElement = By.Id("company-careers");
+        private static readonly By profileButtonElement = By.XPath("//span[contains(text(),'George')]//parent::a");
 
         public CareersPage GoToCareerPages()
         {
@@ -29,6 +30,12 @@ namespace UI.Pages
         {
             WebDriverExtension.ClickOnButton(forTeamsButtonElement);
             return new ForTeamsSteps();
+        }
+
+        public ProfilePage GoToProfilePage()
+        {
+            WebDriverExtension.ClickOnButton(profileButtonElement);
+            return new ProfilePage();
         }
 
         public bool IsSearchBarVisible()

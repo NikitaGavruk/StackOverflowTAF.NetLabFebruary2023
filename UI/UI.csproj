@@ -458,6 +458,7 @@
     <Compile Include="Pages\GenericSearchedCompanyPage.cs" />
     <Compile Include="Pages\LandingPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\ProfilePage.cs" />
     <Compile Include="Pages\SearchResultPage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Steps\CompanyPageSteps.cs" />
