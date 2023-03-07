@@ -3,7 +3,7 @@ using UI.Utils;
 
 namespace UI.Pages {
 
-    internal class LandingPage:LoginPage {
+    public class LandingPage:LoginPage {
 
         private static readonly By loginButton = By.XPath("//a[contains(text(),'Log in')]");
 

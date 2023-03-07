@@ -4,7 +4,7 @@ using UI.Utils;
 
 namespace UI.Pages {
 
-    internal class LoginPage : AbstractPage
+    public class LoginPage : AbstractPage
     {
 
         private static readonly By loginButtonFormContainer = By.Id("submit-button");

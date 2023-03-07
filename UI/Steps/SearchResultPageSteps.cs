@@ -3,7 +3,7 @@ using UI.Pages;
 
 namespace UI.Steps
 {
-    internal class SearchResultPageSteps
+    public class SearchResultPageSteps
     {
 
         SearchResultPage searchResultPage = new SearchResultPage();

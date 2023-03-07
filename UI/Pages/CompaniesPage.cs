@@ -7,7 +7,7 @@ using UI.Utils;
 
 namespace UI.Pages {
 
-    internal class CompaniesPage:AbstractPage {
+    public class CompaniesPage:AbstractPage {
 
         private static readonly By firstCompanyLogoInCompanyList = By.XPath("//div[@class='company-list']/descendant::img[1]");
         private static readonly By filterByTagButton = By.XPath("//button[@id='filter-button-tech']");
