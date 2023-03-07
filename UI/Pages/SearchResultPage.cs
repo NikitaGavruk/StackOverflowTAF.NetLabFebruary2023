@@ -4,7 +4,7 @@ using UI.Utils;
 
 namespace UI.Pages
 {
-    internal class SearchResultPage : AbstractPage
+    public class SearchResultPage : AbstractPage
     {
 
         private static readonly By searchPageTitle = By.XPath("//h1[contains(text(),'Search Results')]");

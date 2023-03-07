@@ -8,7 +8,7 @@ using UI.Utils;
 
 namespace UI.Pages
 {
-    internal class CareersPage : AbstractPage
+    public class CareersPage : AbstractPage
     {
 
         public static readonly By WhoWeAreElement = By.XPath("//h2[contains(text(), \"Who we are\")]");
