@@ -4,7 +4,7 @@ using AutomationTeamProject.WebDriver;
 namespace UI
 {
 
-    internal abstract class AbstractPage
+    public abstract class AbstractPage
     {
 
         public T NavigateToUrl<T>(string url) where T : AbstractPage {

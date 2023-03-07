@@ -10,7 +10,7 @@ using UI.Utils;
 
 namespace UI.Pages
 {
-    internal class GeneralPage : AbstractPage
+    public  class GeneralPage : AbstractPage
     {
 
         private static readonly By forTeamsButtonElement = By.XPath("//a[contains(text(),'For Teams')]");
