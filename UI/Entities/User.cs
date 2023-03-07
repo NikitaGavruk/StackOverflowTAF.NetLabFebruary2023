@@ -1,6 +1,6 @@
 ﻿namespace UI.Entities {
 
-    internal class User {
+    public class User {
 
         public readonly string email;
         public readonly string password;

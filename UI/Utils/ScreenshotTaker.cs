@@ -7,10 +7,11 @@ using System;
 using System.Drawing;
 using Core.Logger;
 using Core.Exceptions;
+using static Core.Logger.Logger;
 
 namespace UI.Utils {
 
-    internal static class ScreenshotTaker {
+    public static class ScreenshotTaker {
 
         private static Logger logger = new Logger(typeof(ScreenshotTaker));
 
@@ -41,12 +42,12 @@ namespace UI.Utils {
             }
         }
 
-        public static string TakeScreenShot() {
+        public static string TakeScreenShot(ExtentReporter.Projects project) {
             string saveDirectory;
             if (Environment.CurrentDirectory.EndsWith(@"bin\Debug"))
                 saveDirectory = @"Screenshots";
             else
-                saveDirectory = @"UI\bin\Dubug\Screenshots";
+                saveDirectory = $@"{project}\bin\Dubug\Screenshots";
 
             if (!Directory.Exists(saveDirectory))
                 Directory.CreateDirectory(saveDirectory);

@@ -4,7 +4,7 @@ using UI.Utils;
 
 namespace UI.Steps {
 
-    internal class LoginPageSteps {
+    public class LoginPageSteps {
         
         private readonly LoginPage loginPage = new LoginPage();
 

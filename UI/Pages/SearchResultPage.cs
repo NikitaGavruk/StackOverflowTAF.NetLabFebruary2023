@@ -1,10 +1,11 @@
 using Core.Utils;
 using OpenQA.Selenium;
 using UI.Utils;
+using static Core.Logger.Logger;
 
 namespace UI.Pages
 {
-    internal class SearchResultPage : AbstractPage
+    public class SearchResultPage : AbstractPage
     {
 
         private static readonly By searchPageTitle = By.XPath("//h1[contains(text(),'Search Results')]");

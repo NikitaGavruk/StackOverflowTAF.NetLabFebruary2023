@@ -11,7 +11,7 @@ using UI.Utils;
 
 namespace UI.Pages
 {
-    internal class ForTeamsPage : AbstractPage
+    public class ForTeamsPage : AbstractPage
     {
 
         By videoButtonElement = By.XPath("//a[contains(text(),' Watch overview video')]");
