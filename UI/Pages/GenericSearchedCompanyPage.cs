@@ -5,7 +5,7 @@ using UI.Utils;
 
 namespace UI.Pages {
 
-    internal class GenericSearchedCompanyPage:AbstractPage {
+    public class GenericSearchedCompanyPage:AbstractPage {
         
         private static readonly By techStackButton = By.XPath("//a[contains(text(),'Tech Stack')]");
         private static readonly By ourTechStackElement = By.XPath("//div[@id='tech-stack-items']/h2");

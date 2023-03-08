@@ -2,10 +2,11 @@ using AutomationTeamProject.WebDriver;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
+using static Core.Logger.Logger;
 
 namespace UI.Utils {
 
-    internal static class WebUtils {
+    public static class WebUtils {
 
         private static readonly By captchaCheckbox = By.XPath("//div[@class='recaptcha - checkbox - border']");
         private static readonly By cookiesButtonElement = By.XPath("//button[contains(text(), 'Accept all cookies')]");

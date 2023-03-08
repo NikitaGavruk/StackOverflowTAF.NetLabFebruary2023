@@ -10,7 +10,7 @@ using Core.Logger;
 namespace UI.Steps {  
     
 
-    internal class ForTeamsSteps {  
+    public class ForTeamsSteps {  
         
         ForTeamsPage forTeamsPage = new ForTeamsPage();
 

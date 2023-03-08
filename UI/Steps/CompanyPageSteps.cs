@@ -2,7 +2,7 @@
 
 namespace UI.Steps {
 
-    internal class CompanyPageSteps : CompaniesPage {
+    public class CompanyPageSteps : CompaniesPage {
 
         CompaniesPage companyPage = new CompaniesPage();
 
