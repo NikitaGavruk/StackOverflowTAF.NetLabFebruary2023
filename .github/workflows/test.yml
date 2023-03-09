@@ -36,4 +36,4 @@ jobs:
       run: packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe UI\bin\Debug\UI.exe
     - name: run BDD Tests
       if: always()
-      run: packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe UI\bin\Debug\BDD.exe
+      run: packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe BDD\bin\Debug\BDD.exe
