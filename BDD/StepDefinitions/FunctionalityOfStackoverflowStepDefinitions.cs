@@ -44,7 +44,7 @@ namespace BDD.StepDefinitions
         public void ThenIShouldSeeThatTheVideoFieldDisplayed()
         {
             scenarioContext.Get<Logger>("logger").Info("Verify that Video field successfully open");        
-            Assert.IsTrue(forTeamsPage.IsVideoSuccesfulyOpen());
+            Assert.IsTrue(forTeamsPage.IsVideoSuccesfulyOpen(), "Video did not open");
         }
 
     }
