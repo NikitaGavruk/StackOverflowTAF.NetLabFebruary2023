@@ -19,8 +19,6 @@ namespace BDD.StepDefinitions
         SearchResultPage searchResultPage = new SearchResultPage();
         SearchResultPageSteps searchResultPageSteps = new SearchResultPageSteps();
         GeneralPage generalPage = new GeneralPage();
-
-
         public SearchFunctionalityStepDefinitions(ScenarioContext scenarioContext)
         {
             this.scenarioContext = scenarioContext;
