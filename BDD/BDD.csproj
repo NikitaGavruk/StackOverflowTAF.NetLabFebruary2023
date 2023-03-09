@@ -454,12 +454,12 @@
     <Compile Include="Hooks\Hooks.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StepDefinitions\SearchingDefinitions.cs" />
+    <Compile Include="StepDefinitions\SearchTestingStepDefinitions.cs" />
     <Compile Include="StepDefinitions\TagSearchDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Features\Searching.feature" />
+    <None Include="Features\SearchWithGivenWord.feature" />
     <None Include="Features\TagSearch.feature" />
     <None Include="packages.config" />
   </ItemGroup>
