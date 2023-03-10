@@ -1,6 +1,7 @@
 ﻿Feature: check the availablity of elements
 check if the elements of UI are visible for user in https://stackoverflow.co
 
+@BDD_UI
 @elementIsVisible
 Scenario: check if the "who We are" element is wisible
 	Given I navigate to https://stackoverflow.co
