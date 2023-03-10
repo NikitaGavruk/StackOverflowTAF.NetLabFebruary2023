@@ -454,12 +454,12 @@
     <Compile Include="Hooks\Hooks.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StepDefinitions\FunctionalityOfStackoverflowStepDefinitions.cs" />
+    <Compile Include="StepDefinitions\ForTeamsVideoStepDefinitions.cs" />
     <Compile Include="StepDefinitions\TagSearchDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Features\FunctionalityOfStackoverflow.feature" />
+    <None Include="Features\ForTeamsVideo.feature" />
     <None Include="Features\TagSearch.feature" />
     <None Include="packages.config" />
   </ItemGroup>

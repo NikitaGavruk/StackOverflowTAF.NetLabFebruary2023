@@ -1,4 +1,4 @@
-﻿Feature: Functionality of stackoverflow
+﻿Feature: Functionality of ForTeamsPage
 
 @BDD_UI
 Scenario: Video field successfully loading on ForTeams page

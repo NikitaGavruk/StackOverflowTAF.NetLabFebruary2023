@@ -13,7 +13,7 @@ using UI.Steps;
 namespace BDD.StepDefinitions
 {
     [Binding]
-    internal class FunctionalityOfStackoverflowStepDefinitions
+    internal class ForTeamsVideoStepDefinitions
     {
 
         private ScenarioContext scenarioContext;
@@ -21,7 +21,7 @@ namespace BDD.StepDefinitions
         ForTeamsSteps forTeamsSteps = new ForTeamsSteps();
         GeneralPage generalPage = new GeneralPage();
 
-        public FunctionalityOfStackoverflowStepDefinitions(ScenarioContext scenarioContext)
+        public ForTeamsVideoStepDefinitions(ScenarioContext scenarioContext)
         {
             this.scenarioContext = scenarioContext;
         }
