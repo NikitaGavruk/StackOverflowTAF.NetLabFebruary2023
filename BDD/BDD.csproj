@@ -456,11 +456,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StepDefinitions\ForTeamsVideoStepDefinitions.cs" />
     <Compile Include="StepDefinitions\CheckTheAvailablityOfElementsDefinitions.cs" />
+    <Compile Include="StepDefinitions\SearchWithGivenWordDefinitions.cs" />
     <Compile Include="StepDefinitions\TagSearchDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Features\ForTeamsVideo.feature" />
+    <None Include="Features\SearchWithGivenWord.feature" />
     <None Include="Features\TagSearch.feature" />
     <None Include="Features\WhoWeAre.feature" />
     <None Include="packages.config" />

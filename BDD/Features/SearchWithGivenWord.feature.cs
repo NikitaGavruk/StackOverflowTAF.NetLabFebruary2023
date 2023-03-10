@@ -20,22 +20,23 @@ namespace BDD.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("check the availablity of elements")]
-    public partial class CheckTheAvailablityOfElementsFeature
+    [NUnit.Framework.DescriptionAttribute("Search Testing")]
+    public partial class SearchTestingFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "WhoWeAre.feature"
+#line 1 "SearchWithGivenWord.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "check the availablity of elements", "check if the elements of UI are visible for user in https://stackoverflow.co", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Search Testing", "    As a user\r\n    I want to be able to search for items on the website\r\n    So t" +
+                    "hat I can find the information I need quickly and easily", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,18 +75,16 @@ namespace BDD.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("check if the \"who We are\" element is wisible")]
+        [NUnit.Framework.DescriptionAttribute("Search for an item with a given word")]
         [NUnit.Framework.CategoryAttribute("BDD_UI")]
-        [NUnit.Framework.CategoryAttribute("elementIsVisible")]
-        public void CheckIfTheWhoWeAreElementIsWisible()
+        public void SearchForAnItemWithAGivenWord()
         {
             string[] tagsOfScenario = new string[] {
-                    "BDD_UI",
-                    "elementIsVisible"};
+                    "BDD_UI"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("check if the \"who We are\" element is wisible", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 6
-this.ScenarioInitialize(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search for an item with a given word", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 8
+   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -94,14 +93,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
- testRunner.Given("I navigate to https://stackoverflow.co", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 8
- testRunner.When("I navigate to \'Careers\' page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 9
- testRunner.Then("I can see the \'who we are\' section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Given("I should see the search bar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 10
+  testRunner.When("I execute search with a given word", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 11
+  testRunner.Then("I should see search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
