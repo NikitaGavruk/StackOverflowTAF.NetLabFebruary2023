@@ -1,31 +1,33 @@
-using NUnit.Framework;
-using AutomationTeamProject.WebDriver;
-using static Core.Logger.Logger;
-using static Core.Logger.Logger.ExtentReporter;
-using Core.Logger;
-using NUnit.Framework.Interfaces;
-using AventStack.ExtentReports;
-using System;
-using UI.Utils;
+﻿using AutomationTeamProject.WebDriver;
 using Core.Utils;
-using System.Configuration;
-using UI.Pages;
+using NUnit.Framework.Interfaces;
+using NUnit.Framework;
+using System;
+using static Core.Logger.Logger.ExtentReporter;
+using static Core.Logger.Logger;
+using Core.Logger;
+using UI.Utils;
+using AventStack.ExtentReports;
+using TechTalk.SpecFlow;
 
-namespace SlackOverFlow
-{
-    public class BaseTest {
+namespace BDD.Hooks {
 
+    [Binding]
+    public class Hooks {
+
+        private ScenarioContext scenarioContext;
         protected static Browser Browser;
         protected static Logger logger;
         protected static ExtentTest testCase;
-        protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter(Projects.UI);
+        protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter(Projects.BDD);
         protected static XML_Reader xmlReader = new XML_Reader(WebUtils.PathToTestData());
-        protected ProfilePage profilePage;
 
+        public Hooks(ScenarioContext scenarioContext) {
+            this.scenarioContext = scenarioContext;
+        }
 
-        [SetUp]
-        public void Setup()
-        {
+        [BeforeScenario]
+        public void BeforeScenario() {
             testCase = extentReporter.CreateTest(TestContext.CurrentContext.Test.Name);
             testCase.Model.Name = TestContext.CurrentContext.Test.Name;
             logger = new Logger(GetType());
@@ -34,22 +36,20 @@ namespace SlackOverFlow
             Browser.WindowMaximaze();
             logger.Info("Go to General page");
             Browser.StartNavigate();
+            scenarioContext["browser"] = Browser;
+            scenarioContext["logger"] = logger;
+            scenarioContext["testCase"] = testCase;
+            scenarioContext["xmlReader"] = xmlReader;
+            scenarioContext["extentReporter"] = extentReporter;
         }
 
-        [TearDown]
-        public void Quite()
-        {
+        [AfterScenario]
+        public void AfterScenario() {
             TestStatus NUnit_status = TestContext.CurrentContext.Result.Outcome.Status;
             Status extentStatus = ExtentReporter.TestStatusConvert(TestContext.CurrentContext.Result.Outcome.Status);
-          
-            if (TestContext.CurrentContext.Test.Name == "ChangeAvatar")
-            {
-                profilePage.ReturneDefaultAvatar();
-            }
 
-            if (NUnit_status.Equals(TestStatus.Failed))
-            {
-                string ScreenshotPath = ScreenshotTaker.TakeScreenShot(Projects.UI);
+            if (NUnit_status.Equals(TestStatus.Failed)) {
+                string ScreenshotPath = ScreenshotTaker.TakeScreenShot(Projects.BDD);
                 logger.Error("Test found error. Screenshot has been taken, ", TestContext.CurrentContext.Result.Message);
 
                 if (Environment.CurrentDirectory.EndsWith(@"bin\Debug")) {
@@ -60,7 +60,7 @@ namespace SlackOverFlow
                 else
                     testCase.Log(extentStatus,
                     $"[{testCase.Model.Name}] Test ended with status " + TestContext.CurrentContext.Result.Outcome.Status.ToString()
-                    + testCase.AddScreenCaptureFromPath($@"{Environment.CurrentDirectory}\UI\bin\Debug\" + ScreenshotPath));
+                    + testCase.AddScreenCaptureFromPath($@"{Environment.CurrentDirectory}\BDD\bin\Debug\" + ScreenshotPath));
             }
             else {
                 logger.Info($"[{testCase.Model.Name}] Test ended with Status: " + TestContext.CurrentContext.Result.Outcome.Status.ToString());
@@ -70,10 +70,9 @@ namespace SlackOverFlow
             Browser.QuiteBrowser();
         }
 
-        [OneTimeTearDown]
-        public void OneTimeTearDown()
-        {
-            ExtentReporter.ExtentFlush(extentReporter);
+        [AfterFeature]
+        public static void AfterFeature() {
+            ExtentFlush(extentReporter);
         }
 
     }
