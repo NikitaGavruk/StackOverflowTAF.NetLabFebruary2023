@@ -44,7 +44,7 @@ namespace SlackOverFlow
             TestStatus NUnit_status = TestContext.CurrentContext.Result.Outcome.Status;
             Status extentStatus = ExtentReporter.TestStatusConvert(TestContext.CurrentContext.Result.Outcome.Status);
           
-            if (TestContext.CurrentContext.Test.Name == "ChangeAvatar")
+            if (TestContext.CurrentContext.Test.Name == "CanChangeAvatar")
             {
                profilePageSteps.ReturnDefaultAvatar(profilePage);
             }
