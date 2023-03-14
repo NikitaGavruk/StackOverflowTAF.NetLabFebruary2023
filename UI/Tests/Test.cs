@@ -119,28 +119,24 @@ namespace UI.Tests
         }
 
         [Test]
-        public void ChangeAvatar()
+        public void CanChangeAvatar()
         {
             logger.Info("Log into The system");
             generalPage = new LoginPageSteps().Login(user);
-            logger.Info("Go To Profiel Page");
-            profilePage = generalPage.GoToProfilePage();
-            logger.Info("Go To Profiel Settings");
-            profilePage.GoToProfileSettings();
-            logger.Info("Go To Edit Profiel");
-            profilePage.GoToEditProfileSettings();
+            logger.Info("Go to Profiel Page and click on Edit button");
+            profilePage = generalPage.GoToProfilePage().GoToProfileSettings().ClickEditProfileSettings();
             logger.Info("Open Avatars field");
             profilePage.ClickOnChangePictureButton();
             logger.Info("Open upload box");
             profilePage.OpenUploadBox();
             logger.Info("Open web link field");
-            profilePage.UploadAvatarInWeb();
+            profilePage.UploadAvatar();
             logger.Info("Input Url");
             profilePage.InputAvatarUrl();
             logger.Info("Save changes");
             profilePage.ClickOnSaveButton();
-            logger.Info("Is successfully Avatar changed");
-            Assert.IsTrue(profilePage.IsAvatarSuccessfullyChange());
+            logger.Info("Avatar successfully changed");
+            Assert.IsTrue(profilePage.IsAvatarSuccessfullyChange(), "Avatar was not successfully changed.");
         }
 
     }

@@ -30,33 +30,32 @@ namespace UI.Pages
         private By generalAvatarPicture = By.XPath("(//div[@id='mainbar-full']//img)[1]");
         private By saveChangesButton = By.XPath("//button[contains(text(),' Save and copy changes to all public communities')]");
         private By defaultAvatarElement = By.XPath("//span[contains(text(),'Identicon')]");
-        private By curentAvatarElement = By.XPath("//div[@class='gravatar-wrapper-164']/img");
+        private By pictureInEditProfile = By.XPath("//div[@class='gravatar-wrapper-164']/img");
         private string avatarUrl = "https://i.pravatar.cc/150?img={0}";
-        private string beforeAttribute;
-        private string afterAttribute;
-        private string helpLoadingWaitBefore;
-        private string helperLoadingWaitAfter;
+        private string beforeUploadSrcAttribute;
+        private string afterUploadSrcAttribute;
 
-        public void GoToProfileSettings()
+        public ProfilePage GoToProfileSettings()
         {
-            beforeAttribute = WebDriverExtension.GetAttributeValueFromField(generalAvatarPicture, 5, "src");
-            WebDriverExtension.ClickOnButton(settingsButtonElement);
+            WebDriverExtension.MouseDown(settingsButtonElement,5);
+            return new ProfilePage();
         }
 
-        public void GoToEditProfileSettings()
+        public ProfilePage ClickEditProfileSettings()
         {
-            WebDriverExtension.ClickOnButton(editProfileButtonElement);
+            WebDriverExtension.MouseDown(editProfileButtonElement,5);
+            return new ProfilePage();
         }
 
         public void ClickOnChangePictureButton()
         {
-            helpLoadingWaitBefore = WebDriverExtension.GetAttributeValueFromField(curentAvatarElement, 5, "src");
+            beforeUploadSrcAttribute = WebDriverExtension.GetAttributeValueFromField(pictureInEditProfile, 5, "src");
             WebDriverExtension.ClickOnButton(changePictureElement);
         }
 
         public void ClickOnSaveButton()
         {
-            this.LoadingImage();
+            WebDriverExtension.WaitUntilPictureIsSuccesfullyLoaded(beforeUploadSrcAttribute, pictureInEditProfile);
             WebDriverExtension.MouseDown(saveChangesButton, 5);
         }
 
@@ -70,7 +69,7 @@ namespace UI.Pages
             WebDriverExtension.MouseDown(avatarUploadElement, 5);
         }
 
-        public void UploadAvatarInWeb()
+        public void UploadAvatar()
         {
             WebDriverExtension.ClickOnButton(uploadAvatarWebElement);
         }
@@ -79,34 +78,15 @@ namespace UI.Pages
         {
             Random rng = new Random();
             int n = rng.Next(1, 70);
-            WebDriverExtension.InputTextInField(linkUploadField, 15, string.Format(avatarUrl, n));
+            WebDriverExtension.InputTextInField(linkUploadField, 5, string.Format(avatarUrl, n));
             WebDriverExtension.ClickOnButton(addPictureElement);
         }
 
         public bool IsAvatarSuccessfullyChange()
         {
-            Browser.Refresh();
-            afterAttribute = WebDriverExtension.GetAttributeValueFromField(generalAvatarPicture, 15, "src");
-            return beforeAttribute != afterAttribute;
-        }
-
-        public void ReturneDefaultAvatar()
-        {
-            this.GoToProfileSettings();
-            this.GoToEditProfileSettings();
-            this.ClickOnChangePictureButton();
-            this.ClickOnDefaultAvatar();
-            this.ClickOnSaveButton();
-        }
-
-        private void LoadingImage()
-        {
-            helperLoadingWaitAfter = WebDriverExtension.GetAttributeValueFromField(curentAvatarElement, 5, "src");
-            while (helpLoadingWaitBefore == helperLoadingWaitAfter)
-            {
-                Browser.GetDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
-                helperLoadingWaitAfter = WebDriverExtension.GetAttributeValueFromField(curentAvatarElement, 5, "src");
-            }
+            WebDriverExtension.WaitUntilPictureIsSuccesfullyLoaded(beforeUploadSrcAttribute, generalAvatarPicture);
+            afterUploadSrcAttribute = WebDriverExtension.GetAttributeValueFromField(generalAvatarPicture, 5, "src");
+            return beforeUploadSrcAttribute != afterUploadSrcAttribute;
         }
 
     }

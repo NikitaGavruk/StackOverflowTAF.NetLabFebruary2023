@@ -10,6 +10,7 @@ using UI.Utils;
 using Core.Utils;
 using System.Configuration;
 using UI.Pages;
+using UI.Steps;
 
 namespace SlackOverFlow
 {
@@ -21,6 +22,7 @@ namespace SlackOverFlow
         protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter(Projects.UI);
         protected static XML_Reader xmlReader = new XML_Reader(WebUtils.PathToTestData());
         protected ProfilePage profilePage;
+        protected ProfilePageSteps profilePageSteps = new ProfilePageSteps();
 
 
         [SetUp]
@@ -44,7 +46,7 @@ namespace SlackOverFlow
           
             if (TestContext.CurrentContext.Test.Name == "ChangeAvatar")
             {
-                profilePage.ReturneDefaultAvatar();
+               profilePageSteps.ReturnDefaultAvatar(profilePage);
             }
 
             if (NUnit_status.Equals(TestStatus.Failed))
