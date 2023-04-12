@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using System;
+using System.Security.Policy;
 
 namespace AutomationTeamProject.WebDriver
 {
@@ -37,13 +38,16 @@ namespace AutomationTeamProject.WebDriver
                 case BrowserType.RemoteChrome:
                     {
                         ChromeOptions chromeOptions = new ChromeOptions();
-                        RemoteWebDriver chromeDriver = new RemoteWebDriver(gridHubUrl, chromeOptions.ToCapabilities(), TimeSpan.FromSeconds(500));
+                        chromeOptions.AddArgument("--disable-dev-shm-usage");
+                        chromeOptions.AddArgument("--no-sandbox");
+                        chromeOptions.AddArgument("--headless");
+                        WebDriver = new RemoteWebDriver(gridHubUrl, chromeOptions);
                         break;
                     }
                 case BrowserType.RemoteFireFox:
                     {
                         FirefoxOptions firefoxOptions = new FirefoxOptions();
-                        RemoteWebDriver firefoxDriver = new RemoteWebDriver(gridHubUrl, firefoxOptions.ToCapabilities(), TimeSpan.FromSeconds(500));
+                        WebDriver = new RemoteWebDriver(gridHubUrl, firefoxOptions.ToCapabilities(), TimeSpan.FromSeconds(500));
                         break;
                     }
             }

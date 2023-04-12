@@ -10,7 +10,7 @@
 
         public static string ElementTimeout => GetEnvironmentVar("ElementTimeout", "30");
 
-        public static string Browser => GetEnvironmentVar("Browser", "Chrome");
+        public static string Browser => GetEnvironmentVar("Browser", "RemoteChrome");
 
         public static string StartUrl => GetEnvironmentVar("StartUrl", "https://stackoverflow.com");
 

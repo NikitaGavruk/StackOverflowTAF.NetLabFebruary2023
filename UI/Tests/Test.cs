@@ -109,11 +109,11 @@ namespace UI.Tests
         [Test]
         public void WhoweAreIsDisplay()
         {
-            logger.Info("navigate to https://stackoverflow.co/");
+            logger.Info("Navigate to https://stackoverflow.co/");
             Browser.NavigateTo("https://stackoverflow.co/");
-            logger.Info("navigate to career page");
+            logger.Info("Navigate to career page");
             var CareersPage = generalPage.GoToCareerPages();
-            logger.Info("find the\"Who we are section\"");
+            logger.Info("Find the\"Who we are section\"");
             Assert.That(CareersPage.WhoWeAreIsVisiblse, Is.True, "the element 'Who we Are' is not visible ");
         }
 
