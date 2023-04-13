@@ -1,4 +1,5 @@
-The small education project for automation testing of www.stackoverflow.com(co) with API, BDD and UI tests.
+The small education project(EPAM Automation LAb) for automation testing of www.stackoverflow.com(co) with API, BDD and UI tests.
+
 To run test on remote:
 1. Dowload docker
 2. Dowload selenium/hub image
