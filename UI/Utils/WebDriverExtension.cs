@@ -99,6 +99,12 @@ namespace UI.Utils {
             new WaitersNamespace.WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(xpath));
         }
 
+        public static void WaitUntilPictureIsSuccesfullyLoaded(string beforeUploadSrc, By afterUploadWebElement)
+        {
+            WaitUntilElementIsVisible(afterUploadWebElement, 5);
+            new WaitersNamespace.WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(5)).Until(driver => !(string.Equals(beforeUploadSrc, GetAttributeValueFromField(afterUploadWebElement, 5, "src"))));
+        }
+
         public static void MouseDown(By xpath, int waitSeconds) {
             WaitUntilElementIsClickable(xpath, waitSeconds);
             Browser.GetActions().MoveToElement(Browser.GetDriver().FindElement(xpath)).Click().Perform();

@@ -8,6 +8,9 @@ using AventStack.ExtentReports;
 using System;
 using UI.Utils;
 using Core.Utils;
+using System.Configuration;
+using UI.Pages;
+using UI.Steps;
 
 namespace SlackOverFlow
 {
@@ -18,6 +21,8 @@ namespace SlackOverFlow
         protected static ExtentTest testCase;
         protected static ExtentReports extentReporter = ExtentReporter.ConfigureExtentReporter(Projects.UI);
         protected static XML_Reader xmlReader = new XML_Reader(WebUtils.PathToTestData());
+        protected ProfilePage profilePage;
+        protected ProfilePageSteps profilePageSteps = new ProfilePageSteps();
 
 
         [SetUp]
@@ -38,6 +43,11 @@ namespace SlackOverFlow
         {
             TestStatus NUnit_status = TestContext.CurrentContext.Result.Outcome.Status;
             Status extentStatus = ExtentReporter.TestStatusConvert(TestContext.CurrentContext.Result.Outcome.Status);
+          
+            if (TestContext.CurrentContext.Test.Name == "CanChangeAvatar")
+            {
+               profilePageSteps.ReturnDefaultAvatar(profilePage);
+            }
 
             if (NUnit_status.Equals(TestStatus.Failed))
             {

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using UI.Entities;
@@ -115,6 +116,27 @@ namespace UI.Tests
             var CareersPage = generalPage.GoToCareerPages();
             logger.Info("Find the\"Who we are section\"");
             Assert.That(CareersPage.WhoWeAreIsVisiblse, Is.True, "the element 'Who we Are' is not visible ");
+        }
+
+        [Test]
+        public void CanChangeAvatar()
+        {
+            logger.Info("Log into The system");
+            generalPage = new LoginPageSteps().Login(user);
+            logger.Info("Go to Profiel Page and click on Edit button");
+            profilePage = generalPage.GoToProfilePage().GoToProfileSettings().ClickEditProfileSettings();
+            logger.Info("Open Avatars field");
+            profilePage.ClickOnChangePictureButton();
+            logger.Info("Open upload box");
+            profilePage.OpenUploadBox();
+            logger.Info("Open web link field");
+            profilePage.UploadAvatar();
+            logger.Info("Input Url");
+            profilePage.InputAvatarUrl();
+            logger.Info("Save changes");
+            profilePage.ClickOnSaveButton();
+            logger.Info("Avatar successfully changed");
+            Assert.IsTrue(profilePage.IsAvatarSuccessfullyChange(), "Avatar was not successfully changed.");
         }
 
     }

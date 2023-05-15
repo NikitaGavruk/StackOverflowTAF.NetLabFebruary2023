@@ -45,6 +45,11 @@ namespace AutomationTeamProject.WebDriver
         {
             webDriver.Navigate().GoToUrl(url);
         }  
+
+        public static void Refresh()
+        {
+            webDriver.Navigate().Refresh();
+        }
         
         public static void StartNavigate()
         {
